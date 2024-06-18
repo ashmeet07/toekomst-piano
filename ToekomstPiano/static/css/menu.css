@@ -1,0 +1,212 @@
+body {
+    overflow: none;
+    background: #E6E6FA;
+    background: linear-gradient(to right, #b24592, #f15f79)
+}
+
+.menu-toggler {
+    position: absolute;
+    display: block;
+    top: 200px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+    background: rgb(0, 0, 0);
+}
+
+.menu-toggler:hover+label,
+.menu-toggler:hover+label:before,
+.menu-toggler:hover+label:after
+{
+    background: rgb(0, 0, 0);
+}
+
+.menu-toggler:checked+label {
+    background: transparent;
+}
+
+.menu-toggler:checked+label:before,
+.menu-toggler:checked+label:after
+{
+top: 0;
+width: 40px;
+transform-origin: 50% 50%;
+background: black;
+}
+
+.menu-toggler:checked+label:before {
+    transform: rotate(180deg) translateY(-60px) translateX(-4px);
+    background: rgb(92, 21, 192);
+}
+
+.menu-toggler:checked+label:after {
+    transform: rotate(0deg) translateY(30px) translateX(4px);
+    background: rgb(17, 36, 214);
+}
+
+.menu-toggler:checked~ul .menu-item {
+    opacity: 1;
+}
+
+.menu-toggler:checked~ul .menu-item:nth-child(1) {
+    transform: rotate(0deg) translate(-110px);
+}
+
+.menu-toggler:checked~ul .menu-item:nth-child(2) {
+    transform: rotate(60deg) translateX(-110px);
+}
+
+.menu-toggler:checked~ul .menu-item:nth-child(3) {
+    transform: rotate(120deg) translateX(-110px);
+}
+
+.menu-toggler:checked~ul .menu-item:nth-child(4) {
+    transform: rotate(180deg) translateX(-110px);
+}
+
+.menu-toggler:checked~ul .menu-item:nth-child(5) {
+    transform: rotate(240deg) translateX(-110px);
+}
+
+.menu-toggler:checked~ul .menu-item:nth-child(6) {
+    transform: rotate(300deg) translateX(-110px);
+}
+
+.menu-toggler:checked~ul .menu-item a {
+    pointer-events: auto;
+}
+
+.menu-toggler+label {
+    width: 40px;
+    height: 5px;
+    display: block;
+    z-index: 1;
+    border-radius: 2.5px;
+    background: black;
+    transition: transform 0.5s top 0.5s;
+    position: absolute;
+    display: block;
+    top: 90px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.menu-toggler+label:before,
+.menu-toggler+label:after {
+    width: 40px;
+    height: 5px;
+    display: block;
+    background: black;
+    z-index: 1;
+    border-radius: 2.5px;
+    background: rgba(255, 255, 255, 0.7);
+    transition: transform 0.5s top 0.5s;
+    content: "";
+    position: absolute;
+    display: block;
+    left: 0;
+}
+
+.menu-toggler+label:before {
+    top: 10px;
+}
+
+.menu-toggler+label:after {
+    top: -10px;
+}
+
+.menu-item:nth-child(1) a {
+    transform: rotate(10deg);
+}
+
+.menu-item:nth-child(2) a {
+    transform: rotate(-80deg);
+}
+
+.menu-item:nth-child(3) a {
+    transform: rotate(-110deg);
+}
+
+.menu-item:nth-child(4) a {
+    transform: rotate(-210deg);
+}
+
+.menu-item:nth-child(5) a {
+    transform: rotate(-240deg);
+}
+
+.menu-item:nth-child(6) a {
+    transform: rotate(-300deg);
+}
+
+.menu-item {
+    position: absolute;
+    display: block;
+    top: 120px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.menu-item a {
+    display: block;
+    width: inherit;
+    height: inherit;
+    line-height: 80px;
+    color: rgba(0, 0, 0, 0.7);
+    background: rgba(20, 20, 183, 0.7);
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 40px;
+    pointer-events: none;
+    transition: 0.2s;
+    background: rgb(198, 9, 195);
+}
+
+.menu-item a:hover {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+    color: white;
+    background: rgba(255, 255, 255, 0.3);
+    font-size: 44.44px;
+    background: rgba(204, 0, 255, 0.581);
+}
+
+.tooltip {
+    visibility: hidden;
+    width: auto;
+    min-height: 20px;
+    /* Minimum height for the tooltip */
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    border-radius: 4px;
+    padding: 2px 5px;
+    /* Adjust padding as needed */
+    position: absolute;
+    z-index: 1;
+    top: calc(100% + 5px);
+    /* Show tooltip below menu item */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    line-height: 1;
+    /* Adjust line height for smaller tooltips */
+}
+
+.menu-item:hover .tooltip {
+    visibility: hidden;
+}

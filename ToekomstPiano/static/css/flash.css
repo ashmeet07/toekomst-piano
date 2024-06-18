@@ -1,0 +1,236 @@
+      * {
+          margin: 0;
+          padding: 0;
+          font-family: sans-serif;
+      }
+
+      body {
+          background: none;
+          height: 100%;
+          width: 100vw;
+          background-image: linear-gradient(rgb(255, 254, 210),
+                  rgb(13, 131, 174),
+                  rgba(240, 60, 60, 0.548),
+                  rgb(28, 16, 57));
+      }
+
+      .letstart {
+          text-align: center;
+          color: white;
+          justify-content: center;
+          background-attachment: fixed;
+          height: 100vh;
+          width: 100vw;
+      }
+
+      .button {
+          height: 8vh;
+          width: 40%;
+          font-weight: bolder;
+          font-size: 20px;
+          border: none;
+          border-radius: 5px;
+          position: relative;
+          top: 50vh;
+          background-color: white;
+          color: rgb(209, 135, 5);
+      }
+
+      .button:hover {
+          color: rgba(244, 11, 197, 0.918);
+          background-color: black;
+          box-shadow: 2px 4px 2px 2px;
+      }
+
+      h1 {
+          position: relative;
+          top: 30vh;
+          font-size: 40px;
+          color: rgb(0, 0, 0);
+          font-weight: bold;
+      }
+
+      p {
+          position: absolute;
+          top: 40vh;
+          left: 14vw;
+          width: 70vw;
+          font-size: 20px;
+          font-weight: bold;
+          font-size: larger;
+          font-weight: bold;
+          color: #fff;
+          text-align: center;
+          -webkit-animation: glow 1s ease-in-out infinite alternate;
+          -moz-animation: glow 1s ease-in-out infinite alternate;
+          animation: glow 1s ease-in-out infinite alternate;
+      }
+
+      .footer {
+          height: 8%;
+          width: 100vw;
+          position: absolute;
+          bottom: 0px;
+          background-color: rgb(0, 0, 0);
+          color: rgb(255, 255, 255);
+          font-weight: bolder;
+          font-size: large;
+          overflow: hidden;
+          text-align: center;
+          line-height: 2;
+      }
+
+      .footerinner {
+          /* animation properties */
+          -moz-transform: translateX(100%);
+          -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+          -moz-animation: my-animation 15s linear infinite;
+          -webkit-animation: my-animation 15s linear infinite;
+          animation: my-animation 15s linear infinite;
+      }
+
+      /* Media Queries for Responsiveness */
+
+      @media screen and (max-width: 768px) {
+          .button {
+              width: 80%;
+              margin: 0 auto;
+          }
+
+          h1 {
+              font-size: 30px;
+          }
+
+          p {
+              width: 90%;
+              left: 5%;
+          }
+      }
+
+      /* Add more media queries as needed... */
+
+      @-webkit-keyframes glow {
+          from {
+              text-shadow: 0 0 10px #000000, 0 0 20px #fff, 0 0 30px #ffffff,
+                  0 0 40px #ffffff, 0 0 50px #ffffff, 0 0 60px #ffffff,
+                  0 0 70px #000000;
+          }
+
+          to {
+              text-shadow: 0 0 20px #fdfdfd, 0 0 30px #ffffff, 0 0 40px #ffffff,
+                  0 0 50px #ffffff, 0 0 60px #fefafc, 0 0 70px #ffffff,
+                  0 0 80px #ffffff;
+          }
+      }
+
+      /* for Firefox */
+      @-moz-keyframes my-animation {
+          from {
+              -moz-transform: translateX(100%);
+          }
+
+          to {
+              -moz-transform: translateX(-100%);
+          }
+      }
+
+      /* for Chrome */
+      @-webkit-keyframes my-animation {
+          from {
+              -webkit-transform: translateX(100%);
+          }
+
+          to {
+              -webkit-transform: translateX(-100%);
+          }
+      }
+
+      @keyframes my-animation {
+          from {
+              -moz-transform: translateX(100%);
+              -webkit-transform: translateX(100%);
+              transform: translateX(100%);
+          }
+
+          to {
+              -moz-transform: translateX(-100%);
+              -webkit-transform: translateX(-100%);
+              transform: translateX(-100%);
+          }
+      }
+      .reg{
+        position: absolute;
+        top:6vh;
+        left:75vw;
+        width: 0px;
+      }
+      /* CSS */
+      .reg-btn {
+          all: unset;
+          width: 100px;
+          height: 30px;
+          font-size: 16px;
+          background: transparent;
+          border: none;
+          color: #f0f0f0;
+          cursor: pointer;
+          z-index: 1;
+          padding: 10px 20px;
+          display: inline-block;
+          align-items: center;
+          justify-content: center;
+          white-space: nowrap;
+          user-select: none;
+          -webkit-user-select: none;
+          touch-action: manipulation;
+          position: absolute;
+          top:0%;
+          left:90%;
+      }
+
+      .reg-btn::after,
+      .reg-btn::before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          z-index: -99999;
+          transition: all .4s;
+      }
+
+      .reg-btn::before {
+          transform: translate(0%, 0%);
+          width: 100%;
+          height: 100%;
+          background: #28282d;
+          border-radius: 10px;
+      }
+
+      .reg-btn::after {
+          transform: translate(10px, 10px);
+          width: 35px;
+          height: 35px;
+          background: #ffffff15;
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+          border-radius: 50px;
+      }
+
+      .reg-btn:hover::before {
+          transform: translate(5%, 20%);
+          width: 110%;
+          height: 110%;
+      }
+
+      .reg-btn:hover::after {
+          border-radius: 10px;
+          transform: translate(0, 0);
+          width: 100%;
+          height: 100%;
+      }
+
+      .reg-btn:active::after {
+          transition: 0s;
+          transform: translate(0, 5%);
+      }

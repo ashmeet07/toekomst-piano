@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Map | ToekomstPiano</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/mark.css">
+    <link rel="stylesheet" href="/static/css/private/profile.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Heebo:400,700|IBM+Plex+Sans:600" rel="stylesheet">
+    <link rel="stylesheet" href="/static/dist/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-kJhX1qZrQS7JW7f8RwD95zI7ISMEpXsuSWQeYZk9fhDOUjH/QOp6RIvDH6iQ" crossorigin="anonymous">
+    <style>
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
+}
+
+header {
+    background-color: none;
+    color: #ffffff;
+    padding: 20px;
+    text-align: left;
+    height:12vh;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em; /* Increased font size */
+    margin-left: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 20px auto;
+    opacity: 1;
+    margin-top:100px;
+    background-image:url(/static/BACKGROUND/HOMEBG.jpg);
+    background-position:center;
+    background-attachment:fixed;
+    background-size:contain;
+     background-repeat: no-repeat;
+}
+
+.section-box {
+    flex: 0 0 calc(33.33% - 40px);
+    margin: 30px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(50, 50, 50, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    transform: translateY(-50px);
+    opacity: 1;
+    text-align: center;
+}
+
+.section-box:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    background-color: rgba(60, 60, 60, 0.8);
+}
+
+.section-box:not(:first-child):hover {
+    background: linear-gradient(45deg, #ff0000, #ff9900, #ffcc00, #33cc33, #3366cc, #9933cc);
+    background-size: 600% 600%;
+    animation: gradientEffect 4s infinite;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    padding: 4px;
+    background-color: #333333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 1.2em; /* Increased font size */
+}
+
+button {
+    text-decoration: none;
+    background:none;
+    border-radius:2px;
+    color: white;
+    transition: color 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    height:100%;
+    font-size: 1em; /* Adjusted font size */
+
+}
+
+button:hover {
+    color: black;
+    background:none;
+    text-weight:bolder;
+}
+
+@keyframes gradientEffect {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+
+
+ul ul ul {
+    margin-left: 30px;
+}
+
+@media (max-width: 900px) {
+    .section-box {
+        flex: 0 0 calc(40% - 40px);
+    }
+}
+
+@media (max-width: 600px) {
+    .section-box {
+        flex: 0 0 calc(80% - 40px);
+    }
+}
+
+    </style>
+</head>
+
+<body style="background-image: url("/static/BACKGROUND/HOMEBG.jpg");">
+    <form>
+        <div>
+        <header>
+            {% include "Profilenav.html" %}
+        </header>
+        </div>
+
+        <div class="container">
+
+            <div class="section-box">
+                <h2><i class="fas fa-cube icon"></i>Documents</h2>
+                <ul>
+                    <li><button type="submit" formaction="">Secondary School</button></li>
+                    <li><button>High School</button></li>
+                    <li><button>Bachelor</button></li>
+                    <li><button>Master's</button></li>
+                    <li><button>UG Diploma</button></li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h2><i class="fas fa-cogs icon"></i> Services</h2>
+                <ul>
+                    <li><button>Visa Application</button></li>
+                    <li><button>Visa Category</button></li>
+                    <li><button>Long Term Visa</button></li>
+                    <li><button>Short Term Visa</button></li>
+                    <li><button>Study Visa</button></li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h2><i class="fas fa-blog icon"></i> Blog</h2>
+                <ul>
+                    <li><button>Article 1</button></li>
+                    <li><button>Article 2</button></li>
+                    <li><button>Article 3</button></li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h2><i class="fas fa-database icon"></i> Counsulting</h2>
+                <ul>
+                    <li><button>Documents Related</button></li>
+                    <li><button>Application Related</button></li>
+                    <li><button>Special Case ?</button></li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h2><i class="fas fa-life-ring icon"></i> Support</h2>
+                <ul>
+                    <li><button>FAQs</button></li>
+                    <li><button>Contact Support</button></li>
+                    <li><button>Knowledge Base</button></li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <h2><i class="fas fa-share-alt icon"></i> Connect With Us</h2>
+                <ul>
+                    <li><button>Twitter</button></li>
+                    <li><button>Facebook</button></li>
+                    <li><button>Instagram</button></li>
+                </ul>
+            </div>
+
+        </div>
+    </form>
+</body>
+
+
+</html>

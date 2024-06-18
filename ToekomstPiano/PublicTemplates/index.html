@@ -1,0 +1,213 @@
+{% extends "base.html" %} 
+
+{% block title %}HOME{% endblock title %} 
+{% block body %}
+<div class="header">
+  <div class="img">
+    {% include "mark.html" %}
+    <div
+      class="Searchbox"
+      style="
+        position: absolute;
+        left: 40%;
+        top: 60px;
+        text-align: center;
+        justify-content: center;
+      ">
+      <input class="search" type="text" placeholder="Search" /><button
+        class="searchbutton">
+        🔎</button>
+    </div>
+    {% include "countrylogo.html" %}
+    {% include "LOGINBUTTON.html" %}
+  </div>
+  {% include "publicnav.html" %}
+</div>
+<div class="body" style="display:block;">
+  <div class="main">
+    <div class="tagline"><br /><br /><br />
+        <h3 class="explore">Explore More</h3><br /><br />
+        <h1 class="h1">We Help Like an Agent for Abroad Free of Cost!</h1>
+    </div>
+    <div class="slider">
+        <div class="wrapper">
+            <div style="background-image: url(/static/BACKGROUND/slideshow1.jpg);"></div>
+            <div style="background-image: url(/static/BACKGROUND/slideshow2.webp);"></div>
+            <div style="background-image: url(/static/BACKGROUND/slideshow3.jpg);"></div>
+        </div>
+    </div>
+  </div>
+  <div class="mainbody">
+    <div class="title">
+        <br /><br />
+        <hr />
+        ~ Services ~
+        <hr />
+        <br /><br /><br />
+    </div>
+    <div class="servicebody">
+        <p class="pservicebody">
+            Dive into the world of ToekomstPiano where we offer a diverse range of services tailored just for you. Whether you're seeking insightful information on our website or personalized guidance from our experts, we're here to make your journey seamless. Explore our latest services and updates today!
+        </p>
+        <div class="servicespic">
+            <img src="/static/ICONS/247.jpg" alt="" class="serviceimg1" />
+            <img src="/static/ICONS/Visaservice.jpeg" alt="" class="serviceimg2" />
+            <img src="/static/ICONS/worldmap.webp" alt="" class="serviceimg3" />
+            <a href="LOGIN">
+                <img src="/static/ICONS/rightarrow.png" alt="" class="serviceimg4" />
+            </a>
+        </div>
+    </div>
+  </div>
+
+<div class="About">
+  <div class="aboutimg">
+    <img src="/static/BACKGROUND/leaving.jpg" alt="Leaving" class="about-image">
+  </div>
+  <div class="card-content">
+    <h1 class="whoarewe">Who are we?</h1>
+    <p class="p">
+      Departing from your comfort zone represents a strategic choice for shaping your future, laden with a myriad of responsibilities. Venturing out to explore the vast expanse of the world, rather than merely departing, is the key. By connecting with us, you gain the opportunity to traverse the globe. Our team stands ready to offer guidance on international affairs, all at no expense to you!
+    </p>
+    <form method="Get" action="ABOUT">
+      <button class="aboutbutton" href="ABOUTUS" type="submit">DISCOVER</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+  
+<div class="enquiry">
+  <div class="faq">
+    <p class="faqtitle">FAQs</p>
+    <ul>
+      <li class="question-container">
+        <div class="question" onclick="toggleAnswer('answer1')">
+          What value or solution does this website offer to the visitor?
+        </div>
+        <div id="answer1" class="answer">
+          This website offers various solutions and valuable content to its
+          visitors, including information, services, products, and resources
+          tailored to their needs.
+        </div>
+      </li>
+
+      <li class="question-container">
+        <div class="question" onclick="toggleAnswer('answer2')">
+          How Can We Help You?
+        </div>
+        <div id="answer2" class="answer">
+          We are here to assist you with any inquiries, issues, or support you
+          may need. Feel free to reach out to us, and we'll do our best to help.
+        </div>
+      </li>
+
+      <li class="question-container">
+        <div class="question" onclick="toggleAnswer('answer3')">
+          Stay Updated - Registered with us.
+        </div>
+        <div id="answer3" class="answer">
+          By registering with us, you'll receive regular updates, news,
+          promotions, and other relevant information to stay informed about our
+          offerings.
+        </div>
+      </li>
+
+      <li class="question">
+        <a href="#footer" style="text-decoration: none">Have Questions? Contact Us!</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+
+  <div class="floating">
+    <div class="floatinglineinner">
+      <a href="" class="f"><img src="/static/ICONS/wikilogo.png" alt=""></a>
+      <a href="" class="s"><img src="/static/ICONS/idplogo.jpeg" alt=""></a>
+      <a href="" class="t"><img src="/static/ICONS/goethelogo.png" alt=""></a>
+      <a href="" class="fo"><img src="/static/ICONS/iletslogo.png" alt=""></a>
+      <a href="" class="fi"><img src="/static/ICONS/topiklogo.png" alt=""></a>
+    </div>
+  </div>
+  <script>
+    function toggleAnswer(answerId) {
+  var answer = document.getElementById(answerId);
+  var allAnswers = document.querySelectorAll(".answer");
+
+  allAnswers.forEach(function (item) {
+    if (item.id !== answerId) {
+      item.classList.remove("show-answer");
+    }
+  });
+  answer.classList.toggle("show-answer");
+}
+</script>
+</div>
+<div class="footerhome">
+   <footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="/static/ICONS/taskbarlogoforwebsite.jpg" alt="Company Logo" class="img-fluid-logo-footer" style="border-radius: 20px; height: 100px" />
+        <div class="footer-about"></br>
+          <p>Plan Your Future In the Right Direction!</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="useful-link">
+          <h2>Contact Us</h2>
+          <div class="contact">
+            <form>
+              <input type="email" placeholder="Enter Email" />
+              <input type="text" placeholder="Enter Query" />
+              <textarea placeholder="Describe Your Query!"></textarea>
+              <button type="submit" class="send">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="social-links">
+          <h2>Follow Us</h2>
+          <div class="social-icons">
+            <ul>
+              <li>
+                <a href="#"><span class="fab fa-facebook-f"></span> Facebook</a>
+              </li></br>
+              <li>
+                <a href="#"><span class="fab fa-instagram"></span> Instagram</a>
+              </li></br>
+              <li>
+                <a href="#"><span class="fab fa-linkedin-in"></span> LinkedIn</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="address">
+          <h2>Address</h2>
+          <div class="address-links">
+            <ul>
+              <li><i class="fa-solid fa-location-dot"></i> Medicaps University, Indore 452001</li></br>
+              <li>☎ <a href="tel:+918349366631">+91 8349366631</a></li></br>
+              <li>✉ <a href="mailto:toekomst.piano@gmail.com">toekomst.piano@gmail.com</a></li></br>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<section id="copy-right">
+  <div class="copy-right-sec">
+    &copy; All Rights Reserved by Ashmeet Singh <a href="#">ToekomstPiano</a>
+  </div>
+</section>
+
+  </div>
+</div>
+  {% endblock body %} 

@@ -1,0 +1,37 @@
+{% extends "basehome.html" %}
+
+{% block title %}Toekomst | Piano{% endblock title %} 
+
+{% block body %}
+<div class="letstart">
+  <div class="navbarlogo">
+    <div class="home" style="position: absolute; left: 0px">
+      {% include "mark.html" %}
+      <div class="reg">
+        <form action="REGISTRATION_FORM" class="regform">
+        {% csrf_token %}
+        <button class="reg-btn">Register</button>
+      </form>
+      </div>
+    </div>
+  </div>
+  <form action="HOME" method="GET">
+    {% csrf_token %}
+    <h1>Welcomes !</h1>
+    <br />
+    <p>
+      With us you will sure about documentation related queries for abroad also
+      you will be taking guaranteed right way thinking to plan your future under
+      better assistance with best counselours.
+    </p>
+    <br />
+    <button type="submit" class="button">Plan Your Future..... !</button>
+  </form>
+</div>
+<div class="footer">
+  <h4 class="footerinner">
+    The latest updates will come soon of how this website will help for clients
+    who are looking forward to visit or study abroad.......!
+  </h4>
+</div>
+{% endblock body %}

@@ -1,0 +1,245 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/static/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    
+<style>
+body {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 300; }
+
+#p {
+  color: #b3b3b3; }
+.custom-dropdown {
+  position: fixed;
+  top: 20px;  
+  right: 20px;
+  z-index: 1000;
+}
+.custom-dropdown .dropdown-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.custom-dropdown .dropdown-link:hover {
+  background-color: #f0f0f0;
+}
+.custom-dropdown .profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.custom-dropdown .profile-pic #img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.custom-dropdown .profile-info #h3 {
+  font-size: 13px;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+
+#a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease; }
+  a, a:hover {
+    text-decoration: none !important; }
+
+.content {
+  padding: 7rem 0; }
+
+#h2 {
+  font-size: 20px; }
+
+.custom-dropdown > #a {
+  color: #000; }
+  .custom-dropdown > #a .arrow {
+    display: inline-block;
+    position: relative;
+    -webkit-transition: .3s transform ease;
+    -o-transition: .3s transform ease;
+    transition: .3s transform ease; }
+
+.custom-dropdown.show > #a .arrow {
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg); }
+
+.custom-dropdown .btn:active, .custom-dropdown .btn:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline: none; }
+
+.custom-dropdown .btn.btn-custom {
+  border: 1px solid #efefef; }
+
+.custom-dropdown .title-wrap {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.custom-dropdown .title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.custom-dropdown .dropdown-link .profile-pic {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 50px;
+  flex: 0 0 50px; }
+  .custom-dropdown .dropdown-link .profile-pic #img {
+    width: 50px;
+    border-radius: 50%; }
+
+.custom-dropdown .dropdown-link .profile-info #h3, .custom-dropdown .dropdown-link .profile-info #span {
+  margin: 0;
+  padding: 0; }
+
+.custom-dropdown .dropdown-link .profile-info #h3 {
+  font-size: 12px;
+  color:black;
+  font-weight: bolder; }
+
+.custom-dropdown .dropdown-link .profile-info #span {
+  display: block;
+  font-size: 10px;
+  color: black;
+    font-weight: bolder;
+  }
+
+.custom-dropdown .dropdown-menu {
+  border: 1px solid transparent !important;
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+  margin-top: -10px !important;
+  padding-top: 0;
+  padding-bottom: 0;
+  opacity: 0;
+  border-radius: 0;
+  background: #000000;
+  right: auto !important;
+  left: auto !important;
+  -webkit-transition: .3s margin-top ease, .3s opacity ease, .3s visibility ease;
+  -o-transition: .3s margin-top ease, .3s opacity ease, .3s visibility ease;
+  transition: .3s margin-top ease, .3s opacity ease, .3s visibility ease;
+  visibility: hidden; }
+  .custom-dropdown .dropdown-menu.active {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0px !important; }
+  .custom-dropdown .dropdown-menu #a {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    padding: 15px 15px;
+    position: relative;
+    color: #b2bac1; }
+    .custom-dropdown .dropdown-menu #a:last-child {
+      border-bottom: none; }
+    .custom-dropdown .dropdown-menu #a .icon {
+      margin-right: 15px;
+      display: inline-block; }
+    .custom-dropdown .dropdown-menu #a:hover, .custom-dropdown .dropdown-menu #a:active, .custom-dropdown .dropdown-menu #a:focus {
+      background: #fff;
+      color: #000; }
+      .custom-dropdown .dropdown-menu #a:hover .number, .custom-dropdown .dropdown-menu #a:active .number, .custom-dropdown .dropdown-menu #a:focus .number {
+        color: #fff; }
+    .custom-dropdown .dropdown-menu #a .number {
+      padding: 2px 6px;
+      font-size: 11px;
+      background: #fd7e14;
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      right: 15px;
+      border-radius: 4px;
+      color: #fff; }
+
+</style>
+</head>
+<body>
+      {% include "mark.html" %}
+      <div class="content">
+          <div class="containe">
+              <div class="row justify-content-center text-center">
+                  <div class="col-md-5">
+                      <div class="dropdown custom-dropdown">
+                          <a id="a" href="#" data-toggle="dropdown" class="d-flex align-items-center dropdown-link text-left" aria-haspopup="true" aria-expanded="false" data-offset="0, 20">
+                              <div class="profile-pic mr-3">
+                                  {% if request.session.profile_pic %}
+                                      <img id="img" src="data:image/jpeg;base64,{{ request.session.profile_pic }}" alt="Profile Picture">
+                                  {% else %}
+                                      <p id="p">No profile picture available.</p>
+                                  {% endif %}
+                              </div>
+                              <div class="profile-info">
+                                  <h3 id="h3">{{request.session.username}}</h3>
+                                  {% if request.session.address_line_1 or request.session.address_line_2 %}
+                                      <span id="span"><strong>{{request.session.address_line_1}},{{request.session.address_line_2}}<strong></span>
+                                  {% else %}
+                                      <span id="span">unknown</span>
+                                  {% endif %}
+                              </div>
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a id="a"  class="dropdown-item" href={% url "Account" %}><span id="span" class="icon icon-dashboard"></span> User Dashboard</a>
+                              <a id="a"  class="dropdown-item" href={% url "INBOX" %}><span id="span" class="icon icon-mail_outline"></span>Inbox <span class="number">3</span></a>
+                              <a id="a"  class="dropdown-item" href="#"><span id="span" class="icon icon-people"></span>Socials</a>
+                              <a id="a"  class="dropdown-item" href={% url "LOGOUT" %}><span id="span" class="icon icon-sign-out"></span>Log out</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <script src="/static/js/jquery-3.3.1.min.js"></script>
+      <script src="/static/js/popper.min.js"></script>
+      <script src="/static/js/bootstrap.min.js"></script>
+      <script src="/static/js/owl.carousel.min.js"></script>
+      <script src="/static/js/main.js"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var checkbox = document.getElementById('lights-toggle');
+                
+            // Add event listener to detect changes in checkbox state
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    document.body.classList.remove('dark-theme');
+                    document.body.classList.add('light-theme');
+                    document.querySelector('.label-text').textContent = 'dark';
+                } else {
+                    document.body.classList.remove('light-theme');
+                    document.body.classList.add('dark-theme');
+                    document.querySelector('.label-text').textContent = 'light';
+                }
+            });
+        });
+      </script>
+</body>
+</html>

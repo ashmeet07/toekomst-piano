@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Account</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Function to redirect to USERHOME/ACCOUNT after a delay
+        setTimeout(function() {
+            var baseUrl = window.location.origin; // Get the base URL
+            var redirectUrl = baseUrl + '/USERHOME/'; // Construct the redirect URL
+            window.location.href = redirectUrl; // Redirect to USERHOME/ACCOUNT
+        }, 3000); // Redirect after 3 seconds (3000 milliseconds)
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="alert alert-success" role="alert">
+            Your profile has been saved successfully.
+        </div>
+    </div>
+</body>
+</html>

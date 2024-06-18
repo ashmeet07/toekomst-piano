@@ -1,0 +1,107 @@
+{% extends "baselogin.html" %} 
+
+
+{% block title %}LOGIN{% endblock title %} 
+
+
+
+{% block body %}
+<div>
+  <div class="homelogo">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h3 class="animate-charcter">ToekomstPiano</h3>
+        <form action="REGISTRATION_FORM" method="GET" class="reg-btn">
+          <button class="button">Register !</button>
+        </form>
+      </div>
+      {% include "countrylogo.html" %}
+    </div>
+  </div>
+  <div class="login">
+    <form action="" method="POST"   >
+      {% csrf_token %}
+      <h1>LogIn</h1>
+      <br />
+      <input type="email" name="email" class="one" placeholder="ID" required />
+      <input
+        type="password"
+        class="two"
+        name="password"
+        min="8"
+        max="16"
+        id="id_password"
+        placeholder="Password"
+        required
+      />
+      <p>
+        INVITE CODE<br />
+        <input
+          type="password"
+          name="invite"
+          class="three"
+          min="6"
+          max="6"
+          placeholder="Enter invite code !"
+          required
+        />
+      </p>
+
+      <div
+        id="captchaText"
+        style="
+          font-size: 20px;
+          font-weight: bold;
+          margin-bottom: 10px;
+          display: inline-block;
+        "
+      ></div>
+      <button
+        type="button"
+        onclick="generateCaptcha()"
+        class="reload"
+        style="width: 20%; height: 4vh; display: inline-block"
+      >
+        <i class="fas fa-redo"></i>
+      </button>
+      <!-- Input field for user's response -->
+      <input
+        type="text"
+        id="userInput"
+        class="capctcha"
+        placeholder="Enter CAPTCHA"
+        style="width: 40%; padding: 2px; color: red"
+      />
+      <br />
+      <button type="submit" onclick="checkCaptcha()">LogIn</button>
+    </form>
+    <a href="cp">Forget Password</a>
+    <script>
+      function checkCaptcha() {
+        // Get user's input
+        var userInput = document.getElementById("userInput").value;
+
+        // Get the current CAPTCHA text
+        var captchaText = document.getElementById("captchaText").innerText;
+
+        // Check if user's input matches the CAPTCHA text
+        if (userInput === captchaText) {
+          alert("CAPTCHA passed!"); // You can replace this with your actual form submission logic
+        } else {
+          alert("CAPTCHA incorrect. Please try again.");
+          generateCaptcha(); // Generate a new CAPTCHA on failure
+        }
+      }
+    </script>
+    <script>
+  // Check if the page is being loaded from the cache
+  if (performance.navigation.type == 1) {
+    // Clear the form data if the page is loaded from the cache
+    document.getElementById("loginForm").reset();
+  }
+</script>
+  </div>
+</div>
+{% include "publicfooter.html" %} 
+
+{% endblock body %}

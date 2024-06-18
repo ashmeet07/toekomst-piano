@@ -1,0 +1,1036 @@
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="/static/ICONS/GradingSystem.png">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/public/load.css">
+    <link rel="stylesheet" href="/static/css/private/profile.css">
+    <link rel="stylesheet" href="/static/css/private/grading.css">
+    <link rel="shortcut icon" href="/static/ICONS/HOMELOGO.png" type="image/x-icon">
+    <title>{% block title %}COUNTRIES | GRADING SCALE {% endblock title %}</title>
+</head>
+  <script>
+   function toggleMenu() {
+      document.querySelector("nav").classList.toggle("open");
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      // Simulate a 2-second delay
+      setTimeout(function () {
+        // Hide the loading screen
+        document.getElementById("loading-screen").style.display = "none";
+        // Display the main content
+        document.getElementById("main-content").style.display = "block";
+      }, 1000);
+    });
+    function scrollToSection(sectionId) {
+      var section = document.getElementById(sectionId);
+      if (section) {
+        var start = window.scrollY;
+        var target = section.getBoundingClientRect().top;
+        var startTime = performance.now();
+        var duration = 1000; // Adjust the duration (in milliseconds) to your preference
+
+        function scrollStep(time) {
+          var elapsed = time - startTime;
+          var progress = Math.min(elapsed / duration, 1);
+          window.scrollTo(0, start + target * easeInOutCubic(progress));
+
+          if (elapsed < duration) {
+            requestAnimationFrame(scrollStep);
+          }
+        }
+
+        function easeInOutCubic(t) {
+          return t < 0.5
+            ? 4 * t * t * t
+            : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+        }
+
+        requestAnimationFrame(scrollStep);
+      }
+    }
+  </script>
+<body>
+    <div id="loading-screen">
+      <div class="loader"></div>
+    </div>
+    <div id="main-content" style="display: none;">
+    <div class="navbarlogo">
+        <div class="home">
+          <a href=""><img src="/static/ICONS/HOMELOGO.png" alt="" ondrag="return false" onselect="return false"
+              oncontextmenu="return false"></a>
+        </div>
+        {% include "Profilenav.html" %}
+        <nav>
+          <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+          <ul>
+            <script src="/static/js/smoothscroll.js"></script>
+            <li><a href="#Canada" onclick="scrollToSection('Canada')">Canada</a></li>
+            <li><a href="#China" onclick="scrollToSection('China')">China</a></li>
+            <li><a href="#France" onclick="scrollToSection('France')">France</a></li>
+            <li><a href="#Germany" onclick="scrollToSection('Germany')">Germany</a></li>
+            <li><a href="#Ireland" onclick="scrollToSection('Ireland')">Ireland</a></li>
+            <li><a href="#Italy" onclick="scrollToSection('Italy')">Italy</a></li>
+            <li><a href="#Japan" onclick="scrollToSection('Japan')">Japan</a></li>
+            <li><a href="#Malaysia" onclick="scrollToSection('Malaysia')">Malaysia</a></li>
+            <li><a href="#UK" onclick="scrollToSection('UK')">UK</a></li>
+            <li><a href="#USA" onclick="scrollToSection('USA')">USA</a></li>
+            <li><a href="#Russia" onclick="scrollToSection('Russia')">Russia</a></li>
+            <li><a href="#Singapore" onclick="scrollToSection('Singapre')">Singapore</a></li>
+            <li><a href="#South Korea" onclick="scrollToSection('South Korea')">South Korea</a></li>
+            <li><a href="#Spain" onclick="scrollToSection('Spain')">Spain</a></li>
+          </ul>
+        </nav>
+         <script>
+                  var nav = document.querySelector("nav");
+
+        if (nav) {
+          // Get the offset position of the navigation bar
+          var sticky = nav.offsetTop;
+
+          // Function to add or remove the 'sticky' class based on scroll position
+          function handleScroll() {
+            if (window.pageYOffset > sticky) {
+              nav.classList.add("sticky");
+            } else {
+              nav.classList.remove("sticky");
+            }
+          }
+
+          // Attach the function to the 'scroll' event
+          window.onscroll = function () {
+            handleScroll();
+          };
+        } else {
+          console.error(
+            "The navigation bar element was not found in the document."
+          );
+        }
+      </script>
+    </div>
+        <div class="body">
+            <div class="canada">
+               <section id="Canada">
+                <img class="image" id="Canada" src="/static/GS/CanadaGs.png" alt="">
+                <div class="innerbody">
+                    <p> <img class"image2" id="Canadaimg" src="/static/ICONS/Canadalogo.png" alt="">In Canada, the grading system varies between provinces and territories, as education falls under the jurisdiction of individual provinces and territories. However, there are commonalities across the country.</P>
+                    <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+            <div class="china">
+                <section id="China">
+                <img class="image" id="China" src="/static/GS/ChinaGs.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Chinalogo.jpeg" alt="">China uses a grading system that is different from the percentage-based system commonly used in some Western countries. The grading system in China is typically based on a 100-point scale, and it is commonly used in both secondary and higher education.</p>
+                    <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="france">
+                <section  id="France">
+                <img class="image"  id="France" src="/static/GS/FranceGs.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Francelogo.png" alt="">In France, the grading system is standardized and used across primary, secondary, and higher education levels. The grading scale is typically based on a 20-point scale, with additional descriptors.</p>
+                     <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="germany">
+               <section id="Germany">
+                 <img class="image" id="Germany" src="/static/GS/GermanyGS.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Germanylogo.jpeg" alt="">In Germany, the grading system is standardized and widely used across primary, secondary, and higher education levels. The grading scale is typically based on a 1 to 5 or 1 to 6 scale, with 1 being the best grade and 5 or 6 being a failing grade. </p>
+                     <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+            <div class="ireland">
+                <section id="Ireland">
+                <img class="image" id="Ireland" src="/static/GS/IrelangGS.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Irelandlogo.png" alt="">In Ireland, the grading system is standardized and used across primary, secondary, and higher education levels. The grading scale can vary slightly between different education levels and institutions, but there is a general consensus.</p>
+                    <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+            <div class="italy">
+                <section d="Italy">
+                <img class="image" id="Italy" src="/static/GS/ITGS.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Italylogo.png" alt="">In Italy, the grading system is standardized across primary, secondary, and higher education levels. The grading scale is typically based on a 0 to 10 scale, with 10 being the highest grade and 0 being the lowest.</p>
+                     <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+            <div class="japan">
+                <section id="Japan">
+                <img class="image" id="Japan" src="/static/GS/JapanGS.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Japanlogo.png" alt="">In Japan, the grading system is standardized across primary, secondary, and higher education levels. The grading scale is typically based on a 0 to 100 scale, but it is often converted to a letter grade or a different scale in practice.</p>
+                     <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+            <div class="ml">
+                <section id="Malaysia">
+                <img class="image" id="Malaysia" src="/static/GS/MalaysiaGS.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Malaysialogo.png" alt="">In Malaysia, the grading system is standardized across primary, secondary, and higher education levels. The grading scale may vary slightly between different education systems, but there is a general consensus.</p>
+                     <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+            <div class="uk">
+                <section id="UK">
+                <img class="image" id="UK" src="/static/GS/UKGS.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Uklogo.png" alt="">In the United Kingdom, the grading system is relatively standardized across primary, secondary, and higher education levels. The grading scales can vary slightly between different regions and educational systems within the UK.</p>
+                    <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+            <div class="usa">
+                <section id="USA">
+                <img class="image" id="USA" src="/static/GS/USAGS.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Usalogo.png" alt="">In the United States, the grading system is standardized across primary, secondary, and higher education levels. Grading practices may vary between different schools and universities, but the following is a general overview:</p>
+                     <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+            <div class="russia">
+                <section id="Russia">
+                <img class="image" id="Russia" src="/static/GS/RussiaGS.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Russialogo.png" alt="">In Russia, the grading system in education typically uses a numerical scale with corresponding letter grades. The most common grading scale in Russian schools and universities is as follows:</p>
+                     <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+            <div class="singapore">
+            <section id="Singapore">
+                <img class="image" id="Singapore" src="/static/GS/SingaporeGs.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Singaporelogo.png" alt="">In Singapore, the grading system in schools and universities typically uses a letter grade system. The primary and secondary education levels often use a grading scale with letter grades and corresponding grade points. The grading system commonly used in Singapore is as follows:</p>
+                   <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+            <div class="sk">
+                <section id="South Korea">
+                <img class="image" id="South Korea" src="/static/GS/SKGS.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Southkorealogo.png" alt="">In South Korea, the grading system in schools and universities typically uses a numerical scale. The grading scale commonly used in South Korean schools is as follows:</p>
+                    <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+            <div class="spain">
+                <section id="Spain">
+                <img class="image" id="Spain" src="/static/GS/SpainGS.png" alt="">
+                <div class="innerbody">
+                    <p><img class"image2" id="Canadaimg" src="/static/ICONS/Spainlogo.png" alt="">In Spain, the grading system used in schools and universities often follows a 10-point scale. The grading scale typically used in Spanish education is as follows:</p>
+                    <ul id="gradedetails">
+                        <li>Secondary School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>High School<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table></li>
+                    <li>Universitie's<table>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+
+                        </tr>
+                    </table></li>
+                    </ul>
+                </div>
+            </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

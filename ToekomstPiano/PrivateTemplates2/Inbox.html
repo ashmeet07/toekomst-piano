@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee task Management Dashboard </title>
+    <link rel="stylesheet" href="/static/css/inbox.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/static/ICONS/HOMELOGO.png" sizes="32x32" type="image/png">
+</head>
+<style>
+.color-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.pink {
+    background-color: #ff7eb9;
+    color: #fff;
+}
+
+.orange {
+    background-color: #ffaf6a;
+    color: #fff;
+}
+
+.green {
+    background-color: #75e6da;
+    color: #fff;
+}
+
+.blue {
+    background-color: #7195ef;
+    color: #fff;
+}
+
+.heading {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 24px;
+    color: #333;
+}
+
+</style>
+<body>
+<div id="toekomstpianosign">
+{% include "mark.html" %}
+</div>
+<div>
+<div class="home-section">
+
+        <div class="home-content">
+            <i class="fas fa-bars"></i>
+            <span class="text">INBOX</span>
+        </div>
+    </div></br></br></br>
+    <!-- Sidebar Section -->
+    <div class="sidebar close">
+        <ul class="nav-list">
+            <li>
+                <div class="icon-link">
+                    <a>
+                        <i class="fa-regular fa-building"></i>
+                        <span class="link-name">Total Documents</span>
+                    </a>
+                </div>
+                 <ul class="sub-menu">
+                    <li><a href="#" class="link-name">Total Documents</a></li>
+                </ul>
+            </li><br/>
+            <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class="fa-regular fa-circle-user"></i>
+                        <span class="link-name">Total Amount Receipt</span>
+                    </a>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="#" class="link-name">Total Amount Receipt</a></li>
+                </ul>
+            </li><br/>
+            <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span class="link-name">Receipt Copy</span>
+                    </a>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="#" class="link-name">Receipt Copy</a></li>
+                </ul>
+            </li><br/>
+            <li>
+                <div class="icon-link">
+                    <a href="#">
+                        <i class="fas fa-laptop-code"></i>
+                        <span class="link-name">Services</span>
+                    </a>
+                </div>
+                <ul class="sub-menu">
+                    <li><a href="#" class="link-name">Services</a></li>
+                </ul>
+            </li><br/>
+            <li>
+                <a href="#">
+                    <i class="fas fa-gear"></i>
+                    <span class="link-name">Settings</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a href="/USERHOME/Account" class="link-name">Settings</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Home Section -->
+
+    <!-- Dashboard Section -->
+     <div class="dashboard">
+        <h2 class="heading">Documents</h2>
+        <div class="color-box">
+            <div class="box pink">
+                <p><i class="fa fa-building-o" aria-hidden="true"></i></p>
+                <p>Total Documents</p>
+            </div>
+            <div class="box orange">
+                <p><i class="fa fa-users" aria-hidden="true"></i></p>
+                <p>Total Services Avail</p>
+            </div>
+            <div class="box green">
+                <p><i class="fa fa-area-chart" aria-hidden="true"></i></p>
+                <p>Total Amount</p>
+            </div>
+            <div class="box blue">
+                <p><i class="fa fa-tasks" aria-hidden="true"></i></p>
+                <p>Payment Receipt</p>
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+<script>
+    /* Created by Tivotal */
+
+let btn = document.querySelector(".fa-bars");
+let sidebar = document.querySelector(".sidebar");
+
+btn.addEventListener("click", () => {
+  sidebar.classList.toggle("close");
+});
+
+let arrows = document.querySelectorAll(".arrow");
+for (var i = 0; i < arrows.length; i++) {
+  arrows[i].addEventListener("click", (e) => {
+    let arrowParent = e.target.parentElement.parentElement;
+
+    arrowParent.classList.toggle("show");
+  });
+}
+    const hamburger = document.getElementById('menu');
+    const navigation = document.getElementById('navigation');
+    hamburger.addEventListener('click', function () {
+        navigation.classList.toggle('active')
+        console.log('clicked');
+    })
+    document.addEventListener("DOMContentLoaded", function() {
+    const toggleSidebarButton = document.getElementById("toggleSidebar");
+    const sidebar = document.querySelector(".sidebar");
+
+    toggleSidebarButton.addEventListener("click", function() {
+        sidebar.classList.toggle("close");
+    });
+});
+
+</script>
+
+
+</html>

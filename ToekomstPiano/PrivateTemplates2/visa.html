@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+
+    <title>Visa Details</title>
+    <style>
+        body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px;
+    text-align: left;
+}
+
+h2 {
+    font-size: 2em;
+    color: #808080;
+}
+#selectCountryMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Set height to the full height of the viewport */
+}
+#selectCountryMessage h2 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 44px;
+    text-align: center;
+    color: black;
+}
+
+
+
+.country-section {
+    display: none;
+    margin-top: 20px;
+}
+
+#countryDropdownContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#countryDropdownLabel {
+    display: none;
+}
+
+#countryDropdown {
+    background-color: purple;
+    color: white;
+    padding: 10px;
+    border: 2px solid #9b59b6;
+    border-radius: 5px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-align: center;
+    font-size: 16px;
+}
+
+#countryDropdown option:checked {
+    background-color: #8e44ad;
+}
+
+.country-flag {
+    width: 30px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.country-heading {
+    font-size: 4em;
+    color: #808080;
+}
+
+#visa-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.visa-category {
+    flex: 0 1 calc(30% - 20px);
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+h2.visa-category {
+    color: #007bff;
+    text-align: left;
+}
+
+.visa-description {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.fee-info {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: left;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.centered-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.right-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+/* Style for the visible content */
+#countryDropdownContainer.show-content .centered-content {
+    display: none;
+}
+
+#countryDropdownContainer.show-content #countryDropdownContainer .country-section {
+    display: block;
+}
+
+    </style>
+</head>
+<body>
+{% include "mark.html" %}
+<div id="countryDropdownContainer">
+    <label for="countryDropdown" id="countryDropdownLabel">Select Country</label>
+    <select id="countryDropdown" onchange="displayVisaDetails()">
+        {% for country in country_dropdown_data %}
+            <option value="{{ country.value }}">{{ country.label }}</option>
+        {% endfor %}
+    </select>
+</div>
+    <div id="selectCountryMessage">
+        <h2 >Select the country for visa application</h2>
+    </div>
+    <div id="visaDetailsUS" class="country-section us">
+        <h2 class="country-heading" hre="USA">🇺🇸United States</h2>
+        <p>The United States offers a wide range of visa services to cater to different purposes</p>
+         <div id="visa-container">
+        <div class="visa-category" id="b-visa">
+            <h2>B1/B2 Visa (Visitor Visa)</h2>
+            <p class="visa-description">
+                <ul>
+                    <li><strong>B1 Visa:</strong> Business visitors who wish to attend conferences, meetings, or negotiate contracts.</li>
+                    <li><strong>B2 Visa:</strong> Tourist visitors who plan to explore the U.S. for tourism, vacations, or medical treatment.</li>
+                </ul>
+            </p>
+            <p class="fee-info">Visa Fee: $160 (Approximately ₹11,800)</p>
+        </div>
+
+        <div class="visa-category" id="f-visa">
+            <h2>F Visa (Student Visa)</h2>
+            <p class="visa-description">
+                <ul>
+                    <li><strong>F-1 Visa:</strong> International students pursuing academic studies at accredited schools, colleges, or universities.</li>
+                    <li><strong>F-2 Visa:</strong> Dependents (spouses and unmarried children under 21) of F-1 visa holders.</li>
+                </ul>
+            </p>
+            <p class="fee-info">Visa Fee: $160 (Approximately ₹11,800)</p>
+        </div>
+
+        <div class="visa-category" id="j-visa">
+            <h2>J Visa (Exchange Visitor Visa)</h2>
+            <p class="visa-description">
+                <ul>
+                    <li><strong>J-1 Visa:</strong> Individuals participating in exchange programs, including students, scholars, trainees, teachers, and au pairs.</li>
+                    <li><strong>J-2 Visa:</strong> Dependents of J-1 visa holders.</li>
+                </ul>
+            </p>
+            <p class="fee-info">Visa Fee: Varies by program</p>
+        </div>
+
+        <div class="visa-category" id="h-visa">
+            <h2>H Visa (Temporary Work Visa)</h2>
+            <p class="visa-description">
+                <ul>
+                    <li><strong>H-1B Visa:</strong> Workers in specialty occupations, often in fields such as science, technology, engineering, and mathematics (STEM).</li>
+                    <li><strong>H-2A Visa:</strong> Temporary agricultural workers.</li>
+                    <li><strong>H-2B Visa:</strong> Temporary non-agricultural workers.</li>
+                </ul>
+            </p>
+            <p class="fee-info">Visa Fee: $190 (Approximately ₹14,000) - $566 (Approximately ₹41,700)</p>
+        </div>
+
+        <div class="visa-category" id="l-visa">
+            <h2>L Visa (Intracompany Transferee Visa)</h2>
+            <p class="visa-description">
+                <ul>
+                    <li><strong>L-1A Visa:</strong> Managers and executives transferring within the same company.</li>
+                    <li><strong>L-1B Visa:</strong> Employees with specialized knowledge transferring within the same company.</li>
+                </ul>
+            </p>
+            <p class="fee-info">Visa Fee: $190 (Approximately ₹14,000) - $566 (Approximately ₹41,700)</p>
+        </div>
+
+        <div class="visa-category" id="o-visa">
+            <h2>O Visa (Extraordinary Ability Visa)</h2>
+            <p class="visa-description">
+                <ul>
+                    <li><strong>O-1 Visa:</strong> Individuals with extraordinary ability or achievement in fields such as science, arts, education, business, or athletics.</li>
+                </ul>
+            </p>
+            <p class="fee-info">Visa Fee: $190 (Approximately ₹14,000)</p>
+        </div>
+    </div>
+    </div>
+
+    <div id="visaDetailsUK" class="country-section uk">
+        <h2 class="country-heading" href="UnitedKingdom">🇬🇧 United Kingdom</h2>
+        <p class="p">The United Kingdom offers a wide range of visa options for various purposes.</p>
+        <p>Please note that visa requirements and fees are subject to change. Always check the latest information on the <a href="https://www.gov.uk/browse/visas-immigration">UK government website</a> before applying.</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="uk-student-visa">
+                <h2 class="visa-category">Student Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Student Route:</strong> This route replaced the Tier 4 (General) visa in 2023. It allows international students to study at UK institutions and work part-time during their studies.</li>
+                        <li><strong>Child Student Route:</strong> For children between 4 and 17 years old coming to study in the UK.</li>
+                        <li><strong>Short-term Study Visa:</strong> For short courses and English language courses.</li>
+                        <li><strong>Graduate Route:</strong> For international students who have completed a degree in the UK. Allows for 2-3 years of work experience.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: £363 - £1,523 (Approximately $525 - $2,200)</p>
+                <img src="images/student-visa-studying.jpg" alt="Student Visa - Studying in the UK" width="200">
+            </div>
+
+            <div class="visa-category" id="uk-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Skilled Worker Visa:</strong> For skilled workers sponsored by a UK employer.</li>
+                        <li><strong>Global Business Mobility Visa:</strong> Introduced in 2024, this visa streamlines options for overseas businesses, including Intra-Company Transfers and Secondments.</li>
+                        <li><strong>Health and Care Worker Visa:</strong> For health and care professionals needed to work in the UK.</li>
+                        <li><strong>Global Talent Visa:</strong> For individuals recognized as leaders or potential leaders in their field.</li>
+                        <li><strong>Start-up Visa:</strong> For individuals looking to establish a business in the UK.</li>
+                        <li><strong>Innovator Visa:</strong> For experienced businesspeople seeking to establish a business in the UK.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: £625 - £1,478 (Approximately $900 - $2,130)</p>
+                <img src="images/work-visa-business-meeting.jpg" alt="Work Visa - Business Meeting in the UK" width="200">
+            </div>
+             <div class="visa-category" id="uk-family-visa">
+                <h2 class="visa-category">Family Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Spouse Visa:</strong> For spouses or civil partners of UK residents.</li>
+                        <li><strong>Unmarried Partner Visa:</strong> For long-term partners of UK residents.</li>
+                        <li><strong>Child Visa:</strong> For children of UK residents.</li>
+                        <li><strong>Parent of a Child Student Visa:</strong> For parents of children studying in the UK.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: £1,523 - £3,250 (Approximately $2,200 - $4,700)</p>
+            </div>
+
+            <div class="visa-category" id="uk-visitor-visa">
+                <h2 class="visa-category">Visitor Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Standard Visitor Visa:</strong> For tourism, business, or medical treatment purposes.</li>
+                        <li><strong>Marriage Visitor Visa:</strong> For individuals coming to the UK to marry or form a civil partnership.</li>
+                        <li><strong>Permitted Paid Engagement Visa:</strong> For individuals invited to the UK for specific paid engagements.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: £95 - £822 (Approximately $137 - $1,190)</p>
+            </div>
+
+        </div>
+    </div>
+
+        <div id="visaDetailsSpain" class="country-section spain">
+        <h2 class="country-heading" href="Spain">🇪🇸 Spain</h2>
+        <p>Spain offers various visa options to accommodate different purposes of travel</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="spain-study-visa">
+                <h2 class="visa-category">Study Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Student Visa:</strong> For individuals planning to pursue academic studies in Spain.</li>
+                        <li><strong>Language Student Visa:</strong> For those attending language courses in Spain.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: €60 - €160 (Approximately $70 - $190)</p>
+                <p class="critical-description">Spain welcomes students from around the world to experience its rich culture and academic offerings. The Study Visa facilitates your educational journey, allowing you to explore Spain's vibrant learning environment.</p>
+                <p class="immigration-link"><a href="https://www.exteriores.gob.es/Consulados/LOSANGELES/en/ConsularServices/Pages/Study-Visa.aspx" target="_blank">Learn More on Spanish Consulate</a></p>
+            </div>
+
+            <div class="visa-category" id="spain-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Highly Qualified Professional Visa:</strong> For skilled professionals with a job offer in Spain.</li>
+                        <li><strong>Temporary Work Visa:</strong> For individuals with a temporary job offer in Spain.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: €60 - €160 (Approximately $70 - $190)</p>
+                <p class="critical-description">Spain values skilled professionals and offers various work visas to attract talent. Whether you are a highly qualified professional or have a temporary job offer, Spain provides opportunities to contribute to its workforce.</p>
+                <p class="immigration-link"><a href="https://www.exteriores.gob.es/Consulados/LOSANGELES/en/ConsularServices/Pages/Employment-Visa.aspx" target="_blank">Learn More on Spanish Consulate</a></p>
+            </div>
+
+            <div class="visa-category" id="spain-family-visa">
+                <h2 class="visa-category">Family Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Family Reunification Visa:</strong> For family members of residents or Spanish citizens.</li>
+                        <li><strong>Family Regrouping Visa:</strong> For family members of non-EU citizens residing in Spain.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: €60 - €160 (Approximately $70 - $190)</p>
+                <p class="critical-description">Spain values family unity and provides options for family members to join their loved ones. The Family Visa programs aim to strengthen family bonds and promote a supportive community.</p>
+                 <p class="immigration-link"><a href="https://www.exteriores.gob.es/Consulados/LOSANGELES/en/ConsularServices/Pages/Reunification-Regrouping-Visa.aspx" target="_blank">Learn More on Spanish Consulate</a></p>
+            </div>
+
+            <div class="visa-category" id="spain-tourist-visa">
+                <h2 class="visa-category">Tourist Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Short Stay Visa:</strong> For individuals planning to visit Spain for tourism, business, or family visits.</li>
+                        <li><strong>Multiple Entry Visa:</strong> Allows for multiple entries during the visa validity period.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: €60 - €160 (Approximately $70 - $190)</p>
+                <p class="critical-description">Spain welcomes visitors from around the world to explore its rich cultural heritage and scenic beauty. The Tourist Visa programs facilitate smooth entry for temporary stays, allowing you to experience the charm of Spain.</p>
+               <p class="immigration-link"><a href="https://www.exteriores.gob.es/Consulados/LOSANGELES/en/ConsularServices/Pages/Tourist-Visa.aspx" target="_blank">Learn More on Spanish Consulate</a></p>
+            </div>
+
+        </div>
+    </div>
+
+        <div id="visaDetailsRussia" class="country-section russia">
+        <h2 class="country-heading" href="Russia">🇷🇺 Russia</h2>
+        <p>Russia offers various visa options to accommodate different purposes of travel</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="russia-tourist-visa">
+                <h2 class="visa-category">Tourist Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Single Entry Tourist Visa:</strong> For individuals planning a short-term visit for tourism purposes.</li>
+                        <li><strong>Double Entry Tourist Visa:</strong> Allows two entries during the visa validity period.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Russia, with its rich history and cultural heritage, invites tourists to explore its iconic landmarks and vibrant cities. The Tourist Visa facilitates your journey, providing an opportunity to experience the diverse attractions of Russia.</p>
+            </div>
+
+            <div class="visa-category" id="russia-business-visa">
+                <h2 class="visa-category">Business Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Single Entry Business Visa:</strong> For individuals conducting business activities in Russia.</li>
+                        <li><strong>Multiple Entry Business Visa:</strong> Allows for multiple entries during the visa validity period.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Russia fosters international business relations and welcomes individuals for business activities. The Business Visa programs facilitate smooth entry for business professionals, allowing them to engage in various commercial endeavors.</p>
+            </div>
+
+            <div class="visa-category" id="russia-student-visa">
+                <h2 class="visa-category">Student Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Student Visa:</strong> For individuals planning to pursue academic studies in Russia.</li>
+                        <li><strong>Exchange Student Visa:</strong> For participants in exchange programs with Russian educational institutions.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Russia offers a robust education system, attracting students from around the world. The Student Visa programs support academic pursuits, providing an opportunity to immerse oneself in Russia's educational environment.</p>
+            </div>
+
+            <div class="visa-category" id="russia-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Work Visa:</strong> For individuals intending to work in Russia with a job offer.</li>
+                        <li><strong>Highly Qualified Specialist Visa:</strong> For skilled professionals with high qualifications.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Russia's dynamic economy attracts professionals from various fields. The Work Visa programs facilitate employment opportunities, allowing individuals to contribute their skills and expertise to Russia's workforce.</p>
+            </div>
+
+        </div>
+        <p class="immigration-link"><a href="https://www.russianembassy.net/" target="_blank">Learn More on Russian Embassy</a></p>
+    </div>
+
+    <div id="visaDetailsCanada" class="country-section canada">
+        <h2 class="country-heading" href="Canada">🇨🇦 Canada</h2>
+        <p>Canada offers various visa options to accommodate different purposes of travel</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="canada-study-visa">
+                <h2 class="visa-category">Study Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Study Permit:</strong> For international students pursuing studies at Canadian educational institutions. Allows for work during studies and post-graduation work opportunities.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: CAD 150 (Approximately $120)</p>
+                <p class="critical-description">Canada welcomes international students to contribute to its diverse academic environment. The Study Permit is designed to facilitate your educational journey and potentially open doors to long-term opportunities.</p>
+                <p class="immigration-link"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada.html" target="_blank">Learn More on Immigration Canada</a></p>
+            </div>
+
+            <div class="visa-category" id="canada-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Express Entry:</strong> For skilled workers applying for permanent residence based on factors like age, education, and work experience.</li>
+                        <li><strong>Temporary Foreign Worker Program (TFWP):</strong> For employers who want to hire foreign workers temporarily.</li>
+                        <li><strong>Provincial Nominee Program (PNP):</strong> Allows Canadian provinces to nominate individuals for immigration based on specific criteria.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: CAD 1550 - CAD 2135 (Approximately $1240 - $1710)</p>
+                <p class="critical-description">Canada values skilled workers and provides various pathways for them to contribute to the country's growth. The work visas are designed to attract individuals with specific skills and qualifications.</p>
+                <p class="immigration-link"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada.html" target="_blank">Learn More on Immigration Canada</a></p>
+            </div>
+
+            <div class="visa-category" id="canada-family-visa">
+                <h2 class="visa-category">Family Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Family Sponsorship:</strong> For Canadian citizens or permanent residents sponsoring family members for immigration.</li>
+                        <li><strong>Super Visa:</strong> Allows parents and grandparents of Canadian citizens or permanent residents to visit for an extended period.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: CAD 75 - CAD 1040 (Approximately $60 - $830)</p>
+                <p class="critical-description">Canada values family reunification and provides options for citizens and residents to bring their loved ones to the country. The Family Visa programs aim to strengthen family bonds.</p>
+                <p class="immigration-link"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/family-sponsorship.html" target="_blank">Learn More on Immigration Canada</a></p>
+            </div>
+
+            <div class="visa-category" id="canada-visitor-visa">
+                <h2 class="visa-category">Visitor Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Visitor Visa:</strong> For individuals visiting Canada for tourism, business, or family visits.</li>
+                        <li><strong>Electronic Travel Authorization (eTA):</strong> Required for visa-exempt foreign nationals traveling to Canada by air.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: CAD 100 (Approximately $80)</p>
+                <p class="critical-description">Canada welcomes visitors from around the world for various purposes. The Visitor Visa and eTA programs facilitate smooth entry for temporary stays.</p>
+                <p class="immigration-link"><a href="https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada.html" target="_blank">Learn More on Immigration Canada</a></p>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="visaDetailsGermany" class="country-section germany">
+        <h2 class="country-heading" href="Germany">🇩🇪 Germany</h2>
+        <p>Germany offers various visa options to meet different travel and stay requirements</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="germany-tourist-visa">
+                <h2 class="visa-category">Tourist Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Short-Stay Schengen Visa:</strong> For short-term visits for tourism purposes in the Schengen area.</li>
+                        <li><strong>National Visa for Tourism:</strong> For longer stays in Germany solely for tourism purposes.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Germany, with its rich history and cultural attractions, welcomes tourists for an immersive experience. The Tourist Visa allows individuals to explore Germany's picturesque landscapes, historic landmarks, and vibrant culture.</p>
+            </div>
+
+            <div class="visa-category" id="germany-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Employment Visa:</strong> For individuals planning to work in Germany with a job offer.</li>
+                        <li><strong>Blue Card:</strong> For highly skilled non-EU nationals intending to work in Germany.</li>
+                        <li><strong>Job Seeker Visa:</strong> For individuals seeking employment opportunities in Germany.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Germany's strong economy and diverse job market attract skilled professionals from around the world. The Work Visa programs facilitate legal employment and contribute to Germany's innovation and growth.</p>
+            </div>
+
+            <div class="visa-category" id="germany-study-visa">
+                <h2 class="visa-category">Study Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Student Visa:</strong> For individuals planning to pursue academic studies at a German university or educational institution.</li>
+                        <li><strong>Language Course Visa:</strong> For individuals attending a language course in Germany.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Germany is known for its world-class education institutions. The Study Visa programs offer international students the opportunity to engage in academic excellence and cultural diversity in Germany.</p>
+            </div>
+
+            <div class="visa-category" id="germany-family-visa">
+                <h2 class="visa-category">Family Reunion Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Family Reunion Visa:</strong> For family members of German residents planning to join them in Germany.</li>
+                        <li><strong>Spouse Visa:</strong> For spouses of German citizens or residents.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Germany values family connections. The Family Reunion Visa programs aim to reunite family members, allowing them to build and strengthen their relationships in the welcoming environment of Germany.</p>
+            </div>
+
+        </div>
+        <p class="immigration-link"><a href="https://www.germany-visa.org/india/" target="https://www.germany-visa.org/india/">Learn More on Germany Visa</a></p>
+    </div>
+
+    <div id="visaDetailsFrance" class="country-section france">
+        <h2 class="country-heading" href="France">🇫🇷 France</h2>
+        <p>France offers a variety of visa options for different purposes of travel and stay</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="france-tourist-visa">
+                <h2 class="visa-category">Tourist Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Short-Stay Schengen Visa:</strong> For short-term visits to France and other Schengen countries for tourism purposes.</li>
+                        <li><strong>Long-Stay Visa for Tourism:</strong> For longer stays in France solely for tourism purposes.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">France, renowned for its art, culture, and cuisine, welcomes tourists for an unforgettable experience. The Tourist Visa allows individuals to explore France's historic landmarks, museums, and picturesque landscapes.</p>
+            </div>
+
+            <div class="visa-category" id="france-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Short-Stay Work Visa:</strong> For short-term work assignments in France.</li>
+                        <li><strong>Long-Stay Work Visa:</strong> For individuals planning to work and reside in France for an extended period.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">France's diverse economy and global companies attract professionals from various fields. The Work Visa programs facilitate legal employment and contribute to the vibrant workforce of France.</p>
+            </div>
+
+            <div class="visa-category" id="france-study-visa">
+                <h2 class="visa-category">Study Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Student Visa:</strong> For individuals planning to pursue academic studies at a French educational institution.</li>
+                        <li><strong>Internship Visa:</strong> For students planning to undertake an internship in France.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">France is a hub for academic excellence. The Study Visa programs offer international students the opportunity to immerse themselves in French education, culture, and language.</p>
+            </div>
+
+            <div class="visa-category" id="france-family-visa">
+                <h2 class="visa-category">Family Reunion Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Family Reunion Visa:</strong> For family members of French residents planning to join them in France.</li>
+                        <li><strong>Spouse Visa:</strong> For spouses of French citizens or residents.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">France values family bonds. The Family Reunion Visa programs aim to bring families together, allowing them to share their lives and experiences in the enchanting setting of France.</p>
+            </div>
+
+        </div>
+        <p class="immigration-link"><a href="https://france-visas.gouv.fr/en/" target="https://france-visas.gouv.fr/en/">Learn More on France Visa</a></p>
+    </div>
+
+        <div id="visaDetailsSingapore" class="country-section singapore">
+        <h2 class="country-heading" href="Singapore">🇸🇬 Singapore</h2>
+        <p>Singapore offers various visa options to cater to different travel needs</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="singapore-tourist-visa">
+                <h2 class="visa-category">Tourist Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Short-Term Tourist Visa:</strong> For individuals planning a short-term visit for tourism purposes.</li>
+                        <li><strong>Long-Term Tourist Visa:</strong> Allows for a longer duration of stay for specific reasons, such as family reunification or special occasions.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Singapore, with its blend of modernity and rich cultural heritage, invites tourists for an enriching experience. The Tourist Visa provides the opportunity to explore the vibrant city-state and its diverse attractions.</p>
+            </div>
+
+            <div class="visa-category" id="singapore-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Employment Pass:</strong> For professionals and skilled workers employed by Singapore companies.</li>
+                        <li><strong>S Pass:</strong> For mid-skilled workers employed by Singapore companies.</li>
+                        <li><strong>EntrePass:</strong> For foreign entrepreneurs looking to start and operate a business in Singapore.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Singapore's dynamic economy welcomes skilled professionals and entrepreneurs. The Work Visa programs facilitate legal employment and business operations, contributing to the growth of Singapore's vibrant business landscape.</p>
+            </div>
+
+            <div class="visa-category" id="singapore-study-visa">
+                <h2 class="visa-category">Study Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Student Pass:</strong> For individuals planning to pursue academic studies in Singapore.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Singapore is a hub for education excellence. The Study Visa program offers opportunities for international students to engage in quality education and experience the vibrant and multicultural learning environment of Singapore.</p>
+            </div>
+
+            <div class="visa-category" id="singapore-family-visa">
+                <h2 class="visa-category">Dependant Pass</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Dependant Pass:</strong> For family members of Employment Pass or S Pass holders.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Singapore values family connections. The Dependant Pass program allows family members to join and stay with their loved ones who are employed in Singapore, creating a supportive and inclusive community.</p>
+            </div>
+
+        </div>
+        <p class="immigration-link"><a href="https://www.ica.gov.sg/enter-transit-depart/entering-singapore/visa_requirements/visa-detail-page/india" target="https://www.ica.gov.sg/enter-transit-depart/entering-singapore/visa_requirements/visa-detail-page/india">Learn More on Singapore Visa</a></p>
+    </div>
+
+    
+    <div id="visaDetailsMalaysia" class="country-section malaysia">
+        <h2 class="country-heading" href="Malaysia">🇲🇾 Malaysia</h2>
+        <p>Malaysia offers various visa options to meet different travel needs</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="malaysia-tourist-visa">
+                <h2 class="visa-category">Tourist Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Single Entry Tourist Visa:</strong> For individuals planning a short-term visit for tourism purposes.</li>
+                        <li><strong>Multiple Entry Tourist Visa:</strong> Allows for multiple entries during the visa validity period.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Malaysia, with its diverse culture and natural beauty, invites tourists for unique experiences. The Tourist Visa facilitates exploration of Malaysia's attractions and vibrant traditions.</p>
+            </div>
+
+            <div class="visa-category" id="malaysia-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Employment Pass:</strong> For skilled professionals employed by a Malaysian company.</li>
+                        <li><strong>Visit Pass (Temporary Employment):</strong> For short-term work assignments.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Malaysia welcomes skilled professionals to contribute to its growing economy. The Work Visa programs provide opportunities for employment, allowing individuals to engage in meaningful work in Malaysia.</p>
+            </div>
+
+            <div class="visa-category" id="malaysia-student-visa">
+                <h2 class="visa-category">Student Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Student Pass:</strong> For individuals planning to pursue academic studies in Malaysia.</li>
+                        <li><strong>Dependent Pass:</strong> For dependents of a student studying in Malaysia.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Malaysia offers quality education and a diverse cultural experience. The Student Visa programs support academic pursuits, providing an opportunity for international students to study in Malaysia.</p>
+            </div>
+
+            <div class="visa-category" id="malaysia-long-term-social-visit-visa">
+                <h2 class="visa-category">Long-Term Social Visit Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Long-Term Social Visit Visa:</strong> For individuals visiting family members residing in Malaysia.</li>
+                        <li><strong>Dependent Pass:</strong> For dependents of an individual holding a Long-Term Social Visit Visa.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Malaysia values family connections and social ties. The Long-Term Social Visit Visa programs allow individuals to spend extended periods with family members in Malaysia.</p>
+            </div>
+
+        </div>
+        <p class="immigration-link"><a href="https://malaysiavisa.imi.gov.my/evisa/evisa.jsp" target="https://malaysiavisa.imi.gov.my/evisa/evisa.jsp">Learn More on Malaysia Visa</a></p>
+    </div>
+
+        <div id="visaDetailsItaly" class="country-section italy">
+        <h2 class="country-heading" href="Italy">🇮🇹 Italy</h2>
+        <p>Italy offers various visa options to cater to different travel purposes</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="italy-tourist-visa">
+                <h2 class="visa-category">Tourist Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Short Stay Tourist Visa:</strong> For individuals planning a short-term visit for tourism purposes.</li>
+                        <li><strong>Long Stay Tourist Visa:</strong> Allows for a longer duration of stay for specific reasons, such as family reunification or special occasions.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Italy, with its rich history, art, and cuisine, welcomes tourists for unforgettable experiences. The Tourist Visa provides the opportunity to explore the beauty and cultural treasures of Italy.</p>
+            </div>
+
+            <div class="visa-category" id="italy-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Employment Visa:</strong> For individuals intending to work in Italy with a job offer.</li>
+                        <li><strong>Seasonal Work Visa:</strong> For those planning to work in Italy for a specific season or period.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Italy offers employment opportunities in various sectors. The Work Visa programs facilitate legal employment, allowing individuals to contribute to the Italian workforce and experience the local culture.</p>
+            </div>
+
+            <div class="visa-category" id="italy-study-visa">
+                <h2 class="visa-category">Study Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Study Visa:</strong> For individuals planning to pursue academic studies in Italy.</li>
+                        <li><strong>Research Visa:</strong> For those participating in research activities in Italy.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Italy is home to prestigious universities and research institutions. The Study Visa programs provide opportunities for academic and research pursuits, allowing individuals to engage in Italy's vibrant educational environment.</p>
+            </div>
+
+            <div class="visa-category" id="italy-family-visa">
+                <h2 class="visa-category">Family Reunion Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Family Reunion Visa:</strong> For family members of Italian citizens or residents planning to join them in Italy.</li>
+                        <li><strong>Accompanying Family Member Visa:</strong> For family members accompanying someone with a long-term visa.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Italy values family connections, and the Family Reunion Visa programs aim to reunite family members. These visas allow individuals to join their loved ones and experience life in Italy together.</p>
+            </div>
+
+        </div>
+        <p class="immigration-link"><a href="https://vistoperitalia.esteri.it/home/en" target="https://vistoperitalia.esteri.it/home/en">Learn More on Italian Visa</a></p>
+    </div>
+
+    <div id="visaDetailsIreland" class="country-section ireland">
+        <h2 class="country-heading" hre="Ireland">🇮🇪 Ireland</h2>
+        <p>Ireland offers various visa options to meet different travel requirements</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="ireland-tourist-visa">
+                <h2 class="visa-category">Tourist Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Short Stay Tourist Visa:</strong> For individuals planning a short-term visit for tourism purposes.</li>
+                        <li><strong>Long Stay Tourist Visa:</strong> Allows for a longer duration of stay for specific reasons, such as family reunification or special occasions.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: €60 (Approximately $68)</p>
+                <p class="critical-description">Ireland, with its picturesque landscapes and rich cultural heritage, invites tourists for memorable experiences. The Tourist Visa provides the opportunity to explore the beauty and hospitality of Ireland.</p>
+            </div>
+
+            <div class="visa-category" id="ireland-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Employment Visa:</strong> For individuals intending to work in Ireland with a job offer.</li>
+                        <li><strong>Working Holiday Visa:</strong> Allows young individuals to work and travel in Ireland for a specific period.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Ireland offers employment opportunities and a vibrant cultural scene. The Work Visa programs facilitate legal employment, allowing individuals to contribute to Ireland's workforce and experience its dynamic lifestyle.</p>
+            </div>
+
+            <div class="visa-category" id="ireland-study-visa">
+                <h2 class="visa-category">Study Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Student Visa:</strong> For individuals planning to pursue academic studies in Ireland.</li>
+                        <li><strong>Research Visa:</strong> For those participating in research activities in Ireland.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: €60 (Approximately $68)</p>
+                <p class="critical-description">Ireland is known for its quality education institutions. The Study Visa programs offer opportunities for international students to engage in academic pursuits and immerse themselves in Ireland's cultural and academic environment.</p>
+            </div>
+
+            <div class="visa-category" id="ireland-family-visa">
+                <h2 class="visa-category">Family Reunion Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Spouse/Family Reunion Visa:</strong> For family members of Irish citizens or residents planning to join them in Ireland.</li>
+                        <li><strong>Dependent Family Visa:</strong> For family members accompanying someone with a long-term visa.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: €60 (Approximately $68)</p>
+                <p class="critical-description">Ireland values family connections. The Family Reunion Visa programs aim to reunite family members, allowing them to build and strengthen their relationships in the warm and welcoming atmosphere of Ireland.</p>
+            </div>
+
+        </div>
+        <p class="immigration-link"><a href="https://www.ireland.ie/en/india/newdelhi/" target="https://www.ireland.ie/en/india/newdelhi/">Learn More on Ireland Visa</a></p>
+    </div>
+
+    <div id="visaDetailsSouthKorea" class="country-section southkorea">
+        <h2 class="country-heading" href="SouthKorea">🇰🇷 South Korea</h2>
+        <p>South Korea offers various visa options to accommodate different travel needs</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="southkorea-tourist-visa">
+                <h2 class="visa-category">Tourist Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Short-Term Tourist Visa:</strong> For individuals planning a short-term visit for tourism purposes.</li>
+                        <li><strong>Long-Term Tourist Visa:</strong> Allows for a longer duration of stay for specific reasons, such as family reunification or special occasions.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">South Korea, with its rich history and modern attractions, welcomes tourists for unforgettable experiences. The Tourist Visa provides the opportunity to explore the cultural heritage and technological marvels of South Korea.</p>
+            </div>
+
+            <div class="visa-category" id="southkorea-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Employment Visa:</strong> For individuals intending to work in South Korea with a job offer.</li>
+                        <li><strong>Working Holiday Visa:</strong> Allows young individuals to work and travel in South Korea for a specific period.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">South Korea offers employment opportunities and cultural experiences. The Work Visa programs facilitate legal employment, allowing individuals to contribute to South Korea's workforce and immerse themselves in the local lifestyle.</p>
+            </div>
+
+            <div class="visa-category" id="southkorea-study-visa">
+                <h2 class="visa-category">Study Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Student Visa:</strong> For individuals planning to pursue academic studies in South Korea.</li>
+                        <li><strong>Language Study Visa:</strong> For those enrolled in language courses in South Korea.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">South Korea is renowned for its academic excellence. The Study Visa programs offer opportunities for international students to engage in quality education and immerse themselves in the vibrant culture of South Korea.</p>
+            </div>
+
+            <div class="visa-category" id="southkorea-family-visa">
+                <h2 class="visa-category">Family Reunion Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Spouse/Family Reunion Visa:</strong> For family members of South Korean citizens or residents planning to join them in South Korea.</li>
+                        <li><strong>Dependent Family Visa:</strong> For family members accompanying someone with a long-term visa.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">South Korea values family bonds. The Family Reunion Visa programs aim to reunite family members, allowing them to build and strengthen their relationships in the vibrant cultural setting of South Korea.</p>
+            </div>
+
+        </div>
+        <p class="immigration-link"><a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwib5diN4-aDAxXsslYBHfZtC8YQFnoECBUQAQ&url=https%3A%2F%2Fwww.visa.go.kr%2FopenPage.do%3FLLANG%3DEN%26MENU_ID%3D10105&usg=AOvVaw0u6OLZI1E272qOdeelvcsk&opi=89978449" target="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwib5diN4-aDAxXsslYBHfZtC8YQFnoECBUQAQ&url=https%3A%2F%2Fwww.visa.go.kr%2FopenPage.do%3FLLANG%3DEN%26MENU_ID%3D10105&usg=AOvVaw0u6OLZI1E272qOdeelvcsk&opi=89978449">Learn More on South Korea Visa</a></p>
+    </div>
+
+
+    <div id="visaDetailsFinland" class="country-section finland">
+        <h2 class="country-heading" href="Finland">🇫🇮 Finland</h2>
+        <p>Finland offers various visa options to cater to different travel purposes</p>
+        <div id="visa-container">
+
+            <div class="visa-category" id="finland-tourist-visa">
+                <h2 class="visa-category">Tourist Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Short Stay Tourist Visa:</strong> For individuals planning a short-term visit for tourism purposes.</li>
+                        <li><strong>Long Stay Tourist Visa:</strong> Allows for a longer duration of stay for specific reasons, such as family reunification or special occasions.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: €80 (Approximately $90)</p>
+                <p class="critical-description">Finland, known for its stunning landscapes and vibrant culture, welcomes tourists for memorable experiences. The Tourist Visa provides the opportunity to explore the beauty of Finland.</p>
+            </div>
+
+            <div class="visa-category" id="finland-work-visa">
+                <h2 class="visa-category">Work Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Employment Visa:</strong> For individuals intending to work in Finland with a job offer.</li>
+                        <li><strong>Seasonal Work Visa:</strong> For those planning to work in Finland for a specific season or period.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: Varies (Check with the consulate)</p>
+                <p class="critical-description">Finland offers employment opportunities in various sectors. The Work Visa programs facilitate legal employment, allowing individuals to contribute to the Finnish workforce and experience the local culture.</p>
+            </div>
+
+            <div class="visa-category" id="finland-study-visa">
+                <h2 class="visa-category">Study Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Study Visa:</strong> For individuals planning to pursue academic studies in Finland.</li>
+                        <li><strong>Research Visa:</strong> For those participating in research activities in Finland.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: €330 (Approximately $370)</p>
+                <p class="critical-description">Finland is known for its high-quality education system. The Study Visa programs provide opportunities for academic and research pursuits, allowing individuals to engage in Finland's innovative learning environment.</p>
+            </div>
+
+            <div class="visa-category" id="finland-family-visa">
+                <h2 class="visa-category">Family Reunion Visa</h2>
+                <p class="visa-description">
+                    <ul>
+                        <li><strong>Family Reunion Visa:</strong> For family members of Finnish citizens or residents planning to join them in Finland.</li>
+                        <li><strong>Accompanying Family Member Visa:</strong> For family members accompanying someone with a long-term visa.</li>
+                    </ul>
+                </p>
+                <p class="fee-info">Visa Fee: €500 (Approximately $560)</p>
+                <p class="critical-description">Finland values family connections, and the Family Reunion Visa programs aim to reunite family members. These visas allow individuals to join their loved ones and experience life in Finland together.</p>
+            </div>
+
+        </div>
+        <p class="immigration-link"><a href="https://visa.vfsglobal.com/ind/en/fin" target="https://visa.vfsglobal.com/ind/en/fin">Learn More on Finnish Visa</a></p>
+    </div>
+
+    <!-- Add more div sections for additional countries -->
+
+<script>
+    function displayVisaDetails() {
+        // Hide select country message
+        var selectCountryMessage = document.getElementById("selectCountryMessage");
+        selectCountryMessage.style.display = "none";
+
+        // Get selected country value
+        var selectedCountry = document.getElementById("countryDropdown").value;
+
+        // Hide all country sections
+        var countrySections = document.querySelectorAll(".country-section");
+        countrySections.forEach(section => {
+            section.style.display = "none";
+        });
+
+        // Show the selected country section
+        var selectedCountrySection = document.querySelector(".country-section." + selectedCountry);
+        if (selectedCountrySection) {
+            selectedCountrySection.style.display = "block";
+        }
+    }
+</script>
+
+
+
+
+</body>
+</html>

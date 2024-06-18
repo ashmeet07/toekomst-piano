@@ -1,0 +1,204 @@
+body {
+    width: 100%;
+    height: 100%;
+    background-image: url("/static/BACKGROUND/HOMEBG.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    position: inherit;
+}
+
+.homelogo {
+    width: auto;
+    background-color: #0094f0;
+    background-position: top;
+    height: 12vh;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.homelogo h3 {
+    display: flex;
+    height: 2vh;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: -1.56px;
+    text-decoration: none;
+    color: #ffffff;
+    position: relative;
+    top: 5vh;
+}
+
+.login {
+    width: 30%;
+    /* Adjust the width as needed */
+    height: auto;
+    /* Allow height to adjust based on content */
+    flex-shrink: 0;
+    border: 2vh solid #ffffff;
+    background: #ffffff;
+    box-shadow: 1vh 1vh 6px 6px rgba(127, 127, 127, 0.612);
+    margin: 12vh auto;
+    /* Center the login box */
+    border-radius: 2px;
+    position: relative;
+    padding: 20px;
+    /* Add padding for content spacing */
+    box-sizing: border-box;
+    /* Include padding in width and height calculations */
+}
+
+/* Existing styles remain unchanged */
+
+.login h1 {
+    display: flex;
+    width: 80%;
+    height: 6vh;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #000000;
+    text-align: center;
+    font-family: 'Inknut Antiqua', serif;
+    font-size: 7vh;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -1.47px;
+    margin: 0 auto;
+}
+
+/* New styles for responsive adjustments */
+@media screen and (max-width: 100%) {
+    .login h1 {
+        font-size: 4vh;
+        /* Adjust the font size for smaller screens */
+    }
+}
+/* CSS */
+.login button {
+    width: 100%;
+    /* Set width to 100% for full width */
+    height: 40px;
+    /* Adjust the height as needed */
+    flex-shrink: 0;
+    border-radius: 4px;
+    background-size: cover;
+    position: relative;
+    background-color: black;
+    border: none;
+    margin-top: 20px;
+    margin-right: 0;
+    /* Align to the left */
+    color: white;
+    font-family: sans-serif;
+    font-weight: bolder;
+}
+
+.login button:hover {
+    background-color: #ef860ec0;
+    color: black;
+    border: 2px solid black;
+    box-shadow: 1vh 1vh 1px 1px rgba(127, 127, 127, 0.612);
+}
+
+.login .one,
+.login .two,
+.login .three {
+    display: flex;
+    justify-content: space-between;
+    /* Add space between .one, .two, .three */
+    align-items: center;
+    flex-shrink: 0;
+    border: none;
+    font-size: 0.9em;
+    /* Adjust the font size as needed */
+    color: rgb(5, 0, 157);
+    padding: 20px;
+    width: 100%;
+    /* Set width to 100% */
+    border-radius: 6px;
+    margin: 10px auto;
+    /* Center one, two, three */
+    background-color: #ef860e83;
+    /* Orangish color */
+    text-align: center;
+}
+
+.login .one {
+    font-family: Arial, Helvetica, sans-serif;
+    color: solid rgb(158, 158, 158);
+    height: 4vh;
+}
+
+.login .two,
+.login .three {
+    height: 4vh;
+}
+
+.login .three {
+    margin-top: 20px;
+    background: #6ab04c;
+    /* Greenish color */
+}
+
+.login p {
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+@media screen and (max-width: 600px) {
+    .login {
+        width: 90%;
+        margin: 12vh auto;
+        /* Center the login box for smaller screens */
+    }
+
+    .login h1 {
+        font-size: 3vh;
+    }
+
+    .login button {
+        margin-top: 20px;
+        margin-right: 0;
+        /* Align to the left for smaller screens */
+    }
+
+    .login .one,
+    .login .two,
+    .login .three {
+        width: 100%;
+    }
+}
+.reg-btn button
+{
+    height: 40px;
+    position: absolute;
+    top: 0%;
+    right:10%;
+    width: 100px;
+    font-size:15px;
+    text-align: center;
+    padding: 0;
+}
+@media only screen and (max-width: 768px) {
+    .login button {
+        display: none;
+        /* Hide login box for screen widths up to 768px */
+    }
+}

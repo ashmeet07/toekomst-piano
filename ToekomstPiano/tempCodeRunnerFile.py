@@ -1,0 +1,6 @@
+result=l.decode('utf-8')
+    # print(result)
+    # string_data = pas.decode('utf-8')
+    # string2 = k.decode('utf-8')
+    # print(password,key)
+    # decrypted_data = decrypt(string_data,string2)

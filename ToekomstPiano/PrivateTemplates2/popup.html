@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 400px; /* Adjust width as needed */
+    text-align: center;
+    color: #fff; /* Text color */
+    animation: jumpIn 0.5s ease forwards; /* Animation to jump in */
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 50% 100%, 0 90%); /* Clip path for cutout design */
+    font-family: "Arial Black", Arial, sans-serif; /* Rich and bold font family */
+    font-weight: bold; /* Make the font bold */
+    font-size: 24px; /* Increase font size for emphasis */
+    /* Gradient background */
+    background: black;
+}
+
+.popup-content {
+    /* No changes to font family, size, or weight in popup content */
+    font-family: Arial, sans-serif; /* Example font family */
+    font-size: 14px;
+}
+
+/* Animation */
+@keyframes jumpIn {
+    0% {
+        transform: translate(-50%, -200%);
+    }
+    80% {
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+    
+    </style>
+</head>
+<body>
+    
+    <div id="custom-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <p id="popup-message"></p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Set a timeout to show the custom pop-up after a delay
+            setTimeout(function () {
+                showCustomPopup('{{name}}'); // Replace 'Your Name' with the actual name
+            }, 1000); // Adjust the delay (in milliseconds) as needed
+        });
+
+        function showCustomPopup(name) {
+            const popup = document.getElementById('custom-popup');
+            const message = document.getElementById('popup-message');
+            const now = new Date();
+            const hour = now.getHours();
+
+            let greeting;
+            if (hour >= 5 && hour < 12) {
+                greeting = 'Morning';
+            } else if (hour >= 12 && hour < 18) {
+                greeting = 'Afternoon';
+            } else {
+                greeting = 'Evening';
+            }
+
+            message.textContent = `${greeting}, ${name}!`;
+            popup.style.display = 'block';
+
+            setTimeout(function () {
+                closePopup();
+            }, 1500); // Adjust the duration (in milliseconds) as needed
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('custom-popup');
+            popup.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

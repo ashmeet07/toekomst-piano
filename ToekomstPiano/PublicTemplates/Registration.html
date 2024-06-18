@@ -1,0 +1,98 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/static/css/copy.css" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/loginbutton.css" />
+    <link
+      rel="shortcut icon"
+      href="/static/ICONS/HOMELOGO.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/static/css/publicfooter.css" />
+    <link rel="stylesheet" href="/static/css/public/registration.css" />
+    <link
+      rel="shortcut icon"
+      href="/static/ICONS/HOMELOGO.png"
+      type="image/x-icon"
+    />
+    <title>{% block title %}Register{% endblock title %}</title>
+    <script src="{% static 'js/form.js' %}%"></script>
+  </head>
+  <script src="{% static 'js/form.js' %}%"></script>
+  <body>
+    {% include "publicnav.html" %}
+    <div class="body">
+      <div class="form">
+        <div class="window">
+          <br />
+          <h3 class="signuptext">Sign Up with ToekomstPiano</h3>
+          <form action="" method="post" id="myForm">
+            {% csrf_token %}
+            <input
+              class="one"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Enter Name"
+              required
+            />
+            <input
+              type="date"
+              name="dob"
+              id="dob"
+              placeholder="Enter date of Birth"
+              class="dob"
+              required
+            />
+            <span id="dobError" style="color: red"></span>
+            <input
+              class="two"
+              type="email"
+              name="Email"
+              id="email"
+              placeholder="Enter Valid Email"
+              required
+            />
+            <input
+              class="three"
+              type="Password"
+              name="password"
+              id="password"
+              placeholder="Enter Strong Password"
+              required
+            />
+            <input
+              class="four"
+              type="Password"
+              name="confirmpassword"
+              id="confirmpassword"
+              placeholder="Re-Enter Password"
+              required
+            /><br />
+            <input
+              type="checkbox"
+              name="t&c"
+              id="t"
+              class="radio"
+              onclick="confirm('Sure ! you want to submit form please check againt if your find any difficulties.'')"
+              required
+            /><a class="t" href="TERMS">Accept Terms & Conditions.</a>
+            <button class="submit" id="submit">SignUp</button>
+          </form>
+          <script src="{% static 'js/form.js' %}%"></script>
+        </div>
+        <div class="registerimage"></div>
+      </div>
+    </div>
+    <div class="footer">
+      <footer style="text-align: center; color: white">
+        <br />
+        <h5 class="copyright">
+          &copy; All rights are reserved by Ashmeet Singh !
+        </h5>
+      </footer>
+    </div>
+  </body>
+</html>

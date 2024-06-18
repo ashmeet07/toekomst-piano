@@ -1,0 +1,170 @@
+/* Navbar styles */
+.navbarlogo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #27adaff7;
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.navbarlogo img {
+    height: 50px;
+    width: auto;
+}
+
+#nav {
+    display: flex;
+    align-items: center;
+}
+
+#nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#nav li {
+    margin-right: 20px;
+}
+
+#nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+#nav a:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Hamburger menu styles */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    color: white;
+    font-size: 30px;
+}
+
+@media screen and (max-width: 1000px) {
+    #nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #nav li {
+        margin: 10px 0;
+    }
+
+    #nav a {
+        display: block;
+        text-align: center;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    #nav.open ul {
+        display: flex;
+    }
+}
+
+/* Body styles */
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.define {
+    background-color: rgba(207, 205, 98, 0.148);
+    border-radius: 30px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.documentation {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.documentation li {
+    margin-bottom: 5px;
+}
+
+.alternate-option {
+    font-style: italic;
+    margin-top: 10px;
+    color: #666;
+}
+
+.alternate-option a {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+/* Image styles */
+.image {
+    border-radius: 4px;
+    box-shadow: 6px 6px 6px #0000005c;
+    margin: 30px;
+    max-width: 90vw;
+    height: auto;
+    padding: 10px;
+}
+
+/* Table styles */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+table th,
+td {
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+th {
+    background-color: #000;
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Inner body styles */
+.innerbody {
+    background-color: rgba(207, 205, 98, 0.148);
+    border-radius: 30px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.innerbody p img {
+    height: 20px;
+    width: auto;
+    margin-left: 10px;
+}
+
+/* Responsive font size */
+@media screen and (max-width: 768px) {
+    .documentation {
+        font-size: 18px;
+    }
+
+    .documentation li {
+        margin-bottom: 3px;
+    }
+}

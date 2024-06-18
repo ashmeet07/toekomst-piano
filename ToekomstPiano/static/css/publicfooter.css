@@ -1,0 +1,146 @@
+#footer,
+#footer2 {
+    background: #f7f7f7f0;
+    padding: 3rem;
+    padding-top: 5rem;
+    text-align: center;
+}
+
+.footer-section {
+    padding-top: 7rem;
+    padding-bottom: 80px;
+}
+
+footer p {
+    font-size: 20px;
+}
+
+.social-links h2,
+.useful-link h2,
+.address h2 {
+    padding-bottom: 15px;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.social-icons,
+.use-links,
+.address-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #777777;
+    text-align: center;
+}
+
+.social-icons a,
+.use-links li a,
+.address-links li a {
+    font-size: 18px;
+    padding: 0.4rem 1rem;
+    border-radius: 3px;
+    color: #82074a;
+}
+
+.social-icons a:hover,
+.use-links li a:hover {
+    color: #000;
+}
+
+li {
+    list-style: none;
+}
+
+.useful-link img,
+.address img {
+    padding-bottom: 15px;
+}
+
+.use-links {
+    line-height: 24px;
+}
+
+.use-links li i {
+    font-size: 14px;
+    padding-right: 8px;
+    color: #898989;
+}
+
+.use-links li a,
+.address-links li a {
+    color: #303030;
+    font-size: 15px;
+    font-weight: 500;
+    color: #777777;
+}
+
+.use-links li a:hover,
+.address-links li a:hover {
+    color: #000;
+}
+
+.address-links li i {
+    font-size: 16px;
+    padding-right: 8px;
+    color: #0793fe;
+}
+
+.address-links li i:nth-child(1) {
+    padding-top: 9px;
+}
+
+.address-links .address1 {
+    font-weight: 500;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.copy-right-sec {
+    padding: 1.2rem;
+    background: #0780e3;
+    color: #fff;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.copy-right-sec a {
+    color: #fcd462;
+    text-decoration: none;
+    outline: none;
+}
+
+a {
+    font-family: sans-serif;
+    font-weight: bolder;
+    text-decoration: none;
+}
+
+.button {
+    position: relative;
+    margin: 18px auto;
+    border: none;
+    background-color: black;
+    color: white;
+    box-shadow: 2px 5px 2px solid rgb(199, 62, 31);
+    width: 50%;
+    max-width: 200px;
+    height: 7vh;
+    font-weight: bolder;
+    font-size: medium;
+    border-radius: 20px;
+}
+
+.button:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 2px 4px;
+}
+
+/* Add a media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <title>Visa Documents Checklist</title>
+     <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+        }
+
+        .container {
+            width: 100vw;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #countryDropdownContainer {
+            margin-bottom: 30px;
+        }
+
+        #countryDropdown {
+            padding: 15px;
+            font-size: 1.2em;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            background-color: #ffffff;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #countryDropdown:hover {
+            border-color: #388E3C;
+        }
+
+        #visa-container {
+            display: none;
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .visa-category {
+            font-size: 2em;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 15px 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        li:hover {
+            background-color: #e0f7fa;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            #countryDropdown {
+                padding: 10px;
+                font-size: 1em;
+            }
+
+            .visa-category {
+                font-size: 1.5em;
+            }
+
+            li {
+                font-size: 1em;
+                padding: 10px 15px;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+{% include "Profilenav.html" %}
+{% comment %} <div class="banner-ad left">
+        <a href="https://example.com/advertisement1" target="_blank">
+            <img src="banner1." alt="Advertisement 1">
+        </a>
+    </div> {% endcomment %}
+
+<div class="container">
+    <h1 id="h1">Checklist for visa documents !</h1>
+
+    <div id="countryDropdownContainer">
+    <label for="countryDropdown" id="countryDropdownLabel">Please Select Your Country</label>
+    <select id="countryDropdown" onchange="displayVisaDetails()">
+        {% for country in country_dropdown_data %}
+            <option value="{{ country.value }}">{{ country.label }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+    <div id="visa-container">
+        <!-- Visa documents will be displayed here -->
+    </div>
+</div>
+<div>
+    <div id="visa-container">
+        <!-- Visa documents will be displayed here -->
+    </div>
+</div>
+
+<script>
+  function displayVisaDetails() {
+    var countryDropdown = document.getElementById('countryDropdown');
+    var selectedCountry = countryDropdown.value;
+    var visaContainer = document.getElementById('visa-container');
+
+    // Clear previous visa details
+    visaContainer.innerHTML = '';
+
+    // Display visa documents based on the selected country
+    if (selectedCountry === 'usa') {
+        visaContainer.innerHTML = `
+            <div id="usaVisaDetails">
+                <h2 class="visa-category">Visitor Visa Requirements for USA</h2>
+                <ul>
+                    <li>1. Valid passport with at least six months beyond your period of stay in the USA.</li>
+                    <li>2. Nonimmigrant Visa Application (Form DS-160) confirmation page.</li>
+                    <li>3. Visa application fee payment receipt.</li>
+                    <li>4. Photo – You will upload your photo while completing the online Form DS-160.</li>
+                    <li>5. Schedule an interview at the U.S. Embassy or Consulate in your country.</li>
+                    <li>6. Evidence of funds to cover your expenses while in the USA (e.g., bank statements, pay stubs).</li>
+                    <li>7. Evidence of compelling social and economic ties abroad (e.g., family, job, property).</li>
+                    <li>8. Letter of invitation from a friend or relative in the USA, if applicable.</li>
+                    <li>9. Travel itinerary and details about your plans in the USA.</li>
+                    <li>10. Any previous U.S. visas you have held.</li>
+                </ul>
+            </div>
+        `;
+    } else if (selectedCountry === 'uk') {
+        visaContainer.innerHTML = `
+            <div id="ukVisaDetails">
+                <h2 class="visa-category">Temporary Visa Requirements for UK</h2>
+                <ul>
+                    <li>1. Valid passport or travel document with at least one blank page.</li>
+                    <li>2. Proof of financial means to cover your living costs while in the UK (e.g., bank statements, pay stubs).</li>
+                    <li>3. Tuberculosis (TB) test results if you are from a country where you have to take the test.</li>
+                    <li>4. Proof of accommodation in the UK (e.g., hotel booking, invitation from host).</li>
+                    <li>5. Detailed travel itinerary (e.g., flight bookings, travel plans).</li>
+                    <li>6. Biometrics information (fingerprints and photograph) if applicable.</li>
+                    <li>7. Completed visa application form.</li>
+                    <li>8. Recent passport-sized color photograph.</li>
+                    <li>9. Supporting documents for your visit (e.g., letter of invitation, business letter).</li>
+                    <li>10. Proof of ties to your home country (e.g., employment letter, property ownership).</li>
+                </ul>
+            </div>
+        `;
+    } else if (selectedCountry === 'canada') {
+        visaContainer.innerHTML = `
+            <div id="canadaVisaDetails">
+                <h2 class="visa-category">Study Visa Requirements for Canada</h2>
+                <ul>
+                    <li>1. Valid passport or travel document.</li>
+                    <li>2. Acceptance letter from a designated learning institution (DLI) in Canada.</li>
+                    <li>3. Proof of sufficient funds to cover tuition fees, living expenses, and return transportation.</li>
+                    <li>4. Passport-sized photographs meeting the visa application photo requirements.</li>
+                    <li>5. Immigration Medical Examination (IME) results if required.</li>
+                    <li>6. Statement of Purpose (SOP) explaining the reason for studying in Canada and your future plans.</li>
+                    <li>7. Biometrics information (fingerprints and photograph) if applicable.</li>
+                    <li>8. Proof of payment for the study permit application fee.</li>
+                    <li>9. English or French language proficiency test results (e.g., IELTS, TOEFL) if applicable.</li>
+                    <li>10. Any previous study or work permits if applicable.</li>
+                </ul>
+            </div>
+        `;
+    }
+
+    // Show the visa container
+    visaContainer.style.display = 'block';
+}
+
+</script>
+</body>
+</html>

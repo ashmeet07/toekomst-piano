@@ -1,0 +1,184 @@
+/* Define section styles */
+/* Define section styles */
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    flex: 0 0 auto;
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    /* Reduce width for image container */
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.2);
+}
+
+.define {
+    flex: 1;
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    max-height: 70vh;
+    /* Limit maximum height for scrolling */
+    padding: 20px;
+    /* Add padding for spacing */
+    border-radius: 4%;
+    /* Rounded corners */
+    background-color: #f2f2f2;
+    /* Light background color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Add shadow for depth */
+    margin: 20px;
+    /* Add margin for spacing */
+    width: 70%;
+    /* Increase width for definition container */
+}
+
+/* Define section styles */
+.define {
+    background-image: url('/static/BACKGROUND/image.jpg');
+    /* Adjust the path to your image */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 4%;
+    padding: 20px;
+    margin: 20px;
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    max-height: 70vh;
+    /* Limit maximum height for scrolling */
+    display: flex;
+    flex-direction: column;
+    /* Arrange content in a single column */
+    justify-content: flex-start;
+    /* Align content to the top */
+    align-items: center;
+    /* Align items horizontally */
+    color: black;
+    /* Text color */
+}
+
+/* Define box styles */
+.define-box {
+    width: 100%;
+    /* Set width to 100% */
+    padding-left: 20px;
+    /* Add some space between image and document box */
+    padding-right: 20px;
+    /* Add some space between document box and screen edge */
+    text-align: justify;
+    /* Align text in document box */
+    margin-bottom: 20px;
+    /* Add bottom margin for spacing */
+}
+
+/* Document box styles */
+.define-box {
+    padding-left: 20px;
+    /* Add some space between image and document box */
+    padding-right: 20px;
+    /* Add some space between document box and screen edge */
+    text-align: justify;
+    /* Align text in document box */
+    margin-bottom: 20px;
+    /* Add bottom margin for spacing */
+}
+
+/* Heading styles */
+.define h2 {
+    font-weight: bold;
+    /* Make the heading bold */
+    margin-top: 0;
+    /* Remove top margin */
+    font-size: 24px;
+    /* Increase font size */
+}
+
+/* List styles */
+.define ul {
+    padding-left: 0;
+    /* Remove default padding */
+    margin-top: 0;
+    /* Remove top margin */
+    list-style: none;
+    /* Remove default list style */
+    display: flex;
+    /* Use flexbox for layout */
+    flex-wrap: wrap;
+    /* Allow items to wrap */
+    justify-content: flex-start;
+    /* Align items to the start */
+}
+
+/* List item styles */
+.define li {
+    margin-bottom: 5px;
+    /* Add margin between list items */
+    background-color: #f2f2f2;
+    /* Light background color */
+    padding: 10px;
+    /* Add padding for list items */
+    border-radius: 4px;
+    /* Rounded corners */
+    margin-right: 10px;
+    /* Add margin between items */
+    display: flex;
+    /* Use flexbox for layout */
+    align-items: center;
+    /* Center items vertically */
+}
+
+/* Custom styling for highlighted text */
+.highlight {
+    font-size: 1.2em;
+    /* Increase font size */
+    color: blue;
+    /* Change the color to your preferred highlight color */
+    font-weight: bold;
+    /* Make the text bold */
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        /* Change to column layout */
+        align-items: center;
+        /* Center items horizontally */
+    }
+
+    .image-container {
+        width: 100%;
+        /* Set image container width to 100% */
+        margin-bottom: 20px;
+        /* Add bottom margin for spacing */
+    }
+
+    .define {
+        width: 100%;
+        /* Set definition container width to 100% */
+    }
+}
+
+/* Styling for "Documents Required" heading */
+.documents-required-heading {
+    color: red;
+    /* Yellow color */
+    font-weight: bold;
+    /* Bold font */
+    font-size: 20px;
+    /* Larger font size */
+    text-align: right;
+}

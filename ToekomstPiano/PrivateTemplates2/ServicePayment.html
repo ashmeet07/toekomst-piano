@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Form</title>
+    <style>
+        /* Custom styles for the form */
+        body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('/static/BACKGROUND/airplanerunway.png') no-repeat center center fixed;
+    background-size: cover; /* Cover the entire viewport */
+    transition: background 1s ease;
+   
+}
+
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            box-sizing: border-box;
+            margin: auto;
+            display: none;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: calc(100% - 20px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 25px;
+            background-color: #f5f5f5;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="text"]::placeholder,
+        input[type="number"]::placeholder,
+        select::placeholder {
+            color: #999;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #6b5b95;
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #543874;
+        }
+
+        /* Animation for the plane */
+        .plane {
+            position: fixed;
+            bottom: -200px;
+            left: -200px;
+            width: 200px;
+            height: 300px;
+            outline: none;
+            animation: fly 3s linear forwards;
+            z-index: 9999;
+        }
+
+        .fire {
+            position: absolute;
+            top: 75%;
+            left: 100%;
+            width: 2%;
+            height: 2%;
+            background: radial-gradient(circle, rgba(255, 0, 0, 1) 0%, rgba(255, 238, 0, 0) 100%);
+            animation: fire 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes fly {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(calc(100vw + 200px), calc(-100vh - 200px)); }
+        }
+
+        @keyframes fire {
+            0% { transform: scale(1); }
+            50% { transform: scale(3.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+    <script>
+    // Function to change background image after 10 seconds
+    function changeBackground() {
+        setTimeout(function() {
+            document.body.style.backgroundImage = "url('https://source.unsplash.com/1600x900/?payment')";
+        }, 3000); // Change background after 10 seconds
+    }
+
+    // Call the function when the page loads
+    window.onload = changeBackground();
+</script>
+
+</head>
+<body>
+
+<div class="plane">
+    <div class="fire"></div>
+    <img src="/static/ICONS/plane.png" alt="Plane" class="plane-img" style="outline: none;"> <!-- Remove image outline -->
+</div>
+
+<div class="container" id="service-form-container">
+    {% include "mark.html" %}
+    <h2>Service Form</h2>
+    <form id="service-form">
+        {% csrf_token %}
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="service">Service</label>
+        <select id="service" name="service" required>
+            <option value="">Select a service</option>
+            <option value="Sop (Statement of Purpose)" selected>Sop (Statement of Purpose)</option>
+            <option value="Resume">Resume</option>
+            <option value="Research Proposal">Research Proposal</option>
+            <option value="Transcript">Transcript</option>
+            <option value="Conditional Degree">Conditional Degree</option>
+            <option value="Fund Support">Fund Support</option>
+        </select>
+
+        <label for="price">Price</label>
+        <select id="price" name="price" disabled>
+            <option value="">-</option>
+        </select>
+
+        <label for="address-line1">Address Line 1</label>
+        <input type="text" id="address-line1" name="address-line1" placeholder="Address line 1" required>
+        <input type="hidden" id="amount" name="amount" value="">
+
+        <label for="address-line2">Address Line 2</label>
+        <input type="text" id="address-line2" name="address-line2" placeholder="Address line 2">
+
+        <label for="pin-code">Pin Code</label>
+        <input type="text" id="pin-code" name="pin-code" placeholder="Pin code" required>
+
+        <label for="experience-title">Experience Title</label>
+        <input type="text" id="experience-title" name="experience-title" placeholder="Title" required>
+
+        <label for="years-of-experience">Years of Experience</label>
+        <input type="number" id="years-of-experience" name="years-of-experience" placeholder="Years of Experience" required>
+
+        <button type="submit" id="rzp-button1">Make Payment -></button>
+    </form>
+</div>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    // Service options and their corresponding prices
+    const servicePrices = {
+        'Sop (Statement of Purpose)': 2500,
+        'Resume': 1500,
+        'Research Proposal': 1000,
+        'Transcript': 3500,
+        'Conditional Degree': 2000,
+        'Fund Support':10000,
+    };
+
+    // Function to update price based on selected service
+    function updatePrice() {
+        const service = document.getElementById('service').value;
+        const price = servicePrices[service];
+        const priceSelect = document.getElementById('price');
+
+        priceSelect.innerHTML = ''; // Clear previous options
+
+        if (price) {
+            const option = document.createElement('option');
+            option.value = price;
+            option.textContent = price + ' INR'; // Change currency if needed
+            priceSelect.appendChild(option);
+            priceSelect.disabled = false; // Enable price select
+        } else {
+            priceSelect.disabled = true; // Disable price select if no service selected
+        }
+    }
+
+    // Event listener to update price when service changes
+    document.getElementById('service').addEventListener('change', updatePrice);
+
+    // Submit form
+    document.getElementById('service-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        // Here, you can send formData to your server using AJAX or fetch
+        console.log('Form submitted:', formData);
+    });
+
+    // Show form after animation finishes
+    const plane = document.querySelector('.plane');
+    plane.addEventListener('animationend', function() {
+        document.getElementById('service-form-container').style.display = 'block';
+    });
+
+    // Initialize price when page loads
+    updatePrice();
+</script>
+
+<script>
+    {% comment %} var orderId = "{{ order_id }}"; {% endcomment %}
+    // Initialize Razorpay
+    var options = {
+        "key": "rzp_test_Ik5g1jJmMAMW1s",
+        "amount": document.getElementById('price').value * 100, // Get amount dynamically
+        "currency": "INR",
+        "name": "Toekomst Piano",
+        "description": "Ecommerce",
+        "image": "/static/ICONS/HOMELOGO.png",
+        {% comment %} "order_id": orderId, {% endcomment %}
+        "handler": function(response) {
+            // Payment successful
+            if (response.razorpay_payment_id) {
+                // Extract payment details
+                var paymentId = response.razorpay_payment_id;
+                var orderId = response.razorpay_payment_order_id;
+                var signature = response.razorpay_payment_signature;
+                
+                console.log("Payment ID:", paymentId);
+                console.log("Order ID:", orderId);
+                console.log("Signature:", signature);
+                
+                // Redirect to success URL with payment details
+                window.location.href = "http://127.0.0.1:9000/success/?razorpay_payment_id=" + response.razorpay_payment_id + "&razorpay_payment_order_id=" + response.razorpay_payment_order_id + "&razorpay_payment_signature=" + response.razorpay_payment_signature;
+
+                // Update the content of the order-id-placeholder
+                document.getElementById('order-id-placeholder').innerText = "Order ID: " + orderId;
+            } 
+            // Payment failed or incomplete
+            else {
+                // Redirect to failure URL or display error message
+                window.location.href = "/failure";
+            }
+        },
+        "theme": {
+            "color": "#3399cc"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    document.getElementById('rzp-button1').onclick = function(e){
+        rzp1.open();
+        e.preventDefault();
+    }
+</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+{% extends "baset&c.html" %} 
+
+{% block title %}Registration Terms and
+Conditions{% endblock title %} 
+
+
+{% block body %}
+<h1><i class="far fa-file-alt icon"></i> Registration Terms and Conditions</h1>
+
+<p>
+  Welcome to ToekomstPiano ! By registering on our platform, you agree to the
+  following terms and conditions. Please read them carefully before proceeding
+  with the registration process.
+</p>
+
+<h2>1. Account Registration</h2>
+<p>
+  When you register for an account with us, you agree to provide accurate and
+  complete information. It is your responsibility to keep your account
+  information up-to-date.
+</p>
+
+<h2>2. User Responsibilities</h2>
+<p>
+  As a registered user, you are responsible for maintaining the confidentiality
+  of your account credentials. You agree not to share your login details with
+  others and to notify us immediately of any unauthorized use of your account.
+</p>
+
+<h2>3. Usage Policies</h2>
+<p>
+  Your use of our platform is subject to our usage policies. This includes
+  adhering to community guidelines, refraining from engaging in harmful
+  activities, and respecting the rights of other users.
+</p>
+
+<h2>4. Termination of Account</h2>
+<p>
+  We reserve the right to terminate or suspend your account at our discretion if
+  you violate these terms and conditions or engage in any activities that may
+  harm the integrity of our platform.
+</p>
+<section>
+  <h2>5. Privacy and Data Protection</h2>
+  <p>
+    We are committed to protecting your privacy. Our
+    <a id="addContentButton">Privacy Policy</a>
+    outlines how we collect, use, and safeguard your personal information. By
+    registering on our platform, you acknowledge and agree to the terms of our
+    Privacy Policy.
+  </p>
+</section>
+
+<section>
+  <h2>6. Communication Preferences</h2>
+  <p>
+    By registering, you agree to receive communications from us, including
+    account-related notifications and promotional materials. You can manage your
+    communication preferences in your account settings.
+  </p>
+</section>
+
+<section>
+  <h2>7. Amendments to Terms</h2>
+  <p>
+    We reserve the right to update or modify these terms and conditions at any
+    time without prior notice. It is your responsibility to review these terms
+    periodically. Continued use of our platform after changes constitutes
+    acceptance of the modified terms.
+  </p>
+</section>
+
+<section>
+  <h3>Important Note:</h3>
+  <div class="highlight">
+    <p>
+      These terms and conditions are a legally binding agreement between you and
+      ToekomstPiano. If you do not agree with any part of these terms, please
+      refrain from registering on our platform.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    For inquiries or concerns, please contact us at
+    <a href="mailto:toekomst.piano@gmail.com" style="color: #e74c3c"
+      >toekomst.piano@gmail.com</a
+    >.
+  </p>
+  <p>Last updated: 20 jan 2024</p>
+</footer>
+<script>
+  document
+    .getElementById("addContentButton")
+    .addEventListener("click", function () {
+      // Additional HTML content to be added
+      var additionalContent = `
+                    <header>
+        <h1>Privacy Policy</h1>
+    </header>
+
+    <section>
+        <h2>Information We Collect</h2>
+        <p>We may collect information that you provide directly to us, such as your name, email address, and other personal information.</p>
+    </section>
+
+    <section>
+        <h2>How We Use Your Information</h2>
+        <p>We use the information we collect for various purposes, including to provide and improve our services, communicate with you, and personalize your experience.</p>
+    </section>
+
+    <section>
+        <h2>Third-Party Links</h2>
+        <p>Our website may contain links to third-party websites. We have no control over the privacy practices or content of these sites and encourage you to review the privacy policies of any third-party sites you visit.</p>
+    </section>
+
+    <section>
+        <h2>Security</h2>
+        <p>We take reasonable measures to help protect your information from unauthorized access or disclosure. However, no method of transmission over the internet or electronic storage is 100% secure.</p>
+    </section>
+
+            `;
+
+      // Create a temporary element to hold the new content
+      var tempElement = document.createElement("div");
+      tempElement.innerHTML = additionalContent;
+
+      // Append the new content to the body of the document
+      document.body.appendChild(tempElement);
+
+      // If you want to scroll to the newly added content
+      tempElement.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+        inline: "nearest",
+      });
+    });
+</script>
+{% endblock body %}

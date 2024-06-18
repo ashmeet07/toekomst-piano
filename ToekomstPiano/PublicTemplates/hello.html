@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive FAQ</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f6f9fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .faq-container {
+            max-width: 600px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-item {
+            border-bottom: 2px solid #dde4ec;
+            padding: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-align: center;
+        }
+
+        .faq-item:hover {
+            background-color: #fde68a;
+            transform: scale(1.02);
+        }
+
+        .faq-question {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .faq-answer {
+            font-size: 16px;
+            color: #34495e;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="faq-container">
+        <!-- FAQ Item 1 -->
+        <div class="faq-item" onclick="toggleAnswer('faq1')">
+            <div class="faq-question">What is Lorem Ipsum?</div>
+            <div class="faq-answer" id="faq1">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="faq-item" onclick="toggleAnswer('faq2')">
+            <div class="faq-question">Why do we use it?</div>
+            <div class="faq-answer" id="faq2">
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+            </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item" onclick="toggleAnswer('faq3')">
+            <div class="faq-question">Where does it come from?</div>
+            <div class="faq-answer" id="faq3">
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(faqId) {
+            var answer = document.getElementById(faqId);
+
+            if (answer.style.maxHeight) {
+                answer.style.maxHeight = null;
+            } else {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        }
+    </script>
+
+</body>
+</html>
